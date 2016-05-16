@@ -36,9 +36,15 @@ export class Page extends TableView implements OnActivate {
     }
 
     ngOnInit() {
-        this.setData(this.users)
+        this.getBuilder()
+            .setData(this.users)
             .addCols(PageTableColumns)
-            .isPaging(true);
-        this.onChangeTable(this.tableBuilder);
+            .setPaging(true)
+            .setSelectable(true);
+
+        this.buildTable();
+        
     }
+
+
 }

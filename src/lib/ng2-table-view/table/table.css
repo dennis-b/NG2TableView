@@ -415,11 +415,6 @@ table.md-table td.md-cell.md-numeric, table.md-table th.md-column.md-numeric {
   text-align: right
 }
 
-table.md-table td.md-cell md-checkbox, table.md-table th.md-column md-checkbox {
-  margin: 0;
-  width: 20px
-}
-
 table.md-table td.md-cell {
   color: rgba(0, 0, 0, .87);
   font-size: 13px;

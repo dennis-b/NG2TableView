@@ -1,5 +1,6 @@
 import {TableConfigBuilder} from "./ConfigBuilder";
 import * as _ from 'underscore'
+import {TableColumn} from "./TableColumn";
 
 export class TableView {
 
@@ -56,13 +57,24 @@ export class TableView {
         return data;
     }
 
-    onChangeTable(config:any) {
+    buildTable() {
+        if (this.tableBuilder.selectable) {
+            var tableColumn = new TableColumn().setTemplate(require("../template/select.html"));
+            this.tableBuilder.insertCol(0, tableColumn)
 
-        if (config.filtering) {
+        }
+        this.onChangeTable();
+
+    }
+
+
+    onChangeTable(config?:any) {
+
+        if (config && config.filtering) {
             Object.assign(this.tableBuilder.filtering, config.filtering);
         }
 
-        if (config.sorting) {
+        if (config && config.sorting) {
             this.tableBuilder.sorting = config.sorting;
         }
 

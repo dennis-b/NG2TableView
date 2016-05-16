@@ -9,7 +9,7 @@
             </md-input>
         </div>
 
-        <ng2-table [config]="tableBuilder.sorting"
+        <ng2-table [config]="tableBuilder"
                    (tableChanged)="onChangeTable($event)"
                    [rows]="tableBuilder.rows"
                    [columns]="tableBuilder.columns">
