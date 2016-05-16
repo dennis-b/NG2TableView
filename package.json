@@ -2,8 +2,8 @@
   "name": "NG2TableView",
   "version": "",
   "description": "Table View for angular 2",
-  "author": "dennisb",
-  "homepage": "",
+  "author": "Dennis Borshchevski <dennisborsh@gmail.com>",
+  "homepage": "https://github.com/dennis-b/NG2TableView",
   "license": "",
   "scripts": {
     "typings": "typings",
@@ -63,7 +63,6 @@
     "gsap": "^1.18.3",
     "moment": "^2.13.0",
     "normalize.css": "^4.1.1",
-    "parse": "^1.8.3",
     "rxjs": "5.0.0-beta.6",
     "underscore": "^1.8.3",
     "zone.js": "~0.6.11"
@@ -106,9 +105,19 @@
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.12.0"
   },
+  "keywords": [
+    "angular2",
+    "ng2",
+    "angularjs",
+    "table",
+    "tableView",
+    "grid",
+    "filter",
+    "sort"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/dennis-b/NG2TableView"
   },
   "engines": {
     "node": ">= 4.2.1",
