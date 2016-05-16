@@ -1,0 +1,56 @@
+<div class="md-table-pagination">
+
+  <div class="page-select">
+    <label>
+      <span class="label">Page:</span>
+      <select [(ngModel)]="config.page" (ngModelChange)="onPageSelect()">
+        <option *ngFor="let page of totalPagesArr; let i = index" [ngValue]="toNumber(i+1)">{{i+1}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="limit-select">
+    <label>
+      <span class="label">Rows per page:</span>
+      <select [(ngModel)]="config.itemsPerPage" (ngModelChange)="itemsPerPageSelect()">
+        <option *ngFor="let i of [5, 10, 20, 50]" [ngValue]="toNumber(i)">{{i}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="buttons">
+    <button md-button class="md-icon-button"
+            type="button"
+            (click)="selectPage(1, $event)"
+            [disabled]="noPrevious()"
+            aria-label="First">
+      <i md-icon class="material-icons">skip_previous</i>
+    </button>
+
+    <button md-button class="md-icon-button"
+            type="button"
+            (click)="selectPage(config.page - 1, $event)"
+            [disabled]="noPrevious()"
+            aria-label="Previous">
+      <i md-icon class="material-icons">keyboard_arrow_left</i>
+    </button>
+
+    <button md-button class="md-icon-button"
+            type="button"
+            (click)="selectPage(config.page + 1, $event)"
+            [disabled]="noNext()"
+            aria-label="Next">
+      <i md-icon class="material-icons">keyboard_arrow_right</i>
+    </button>
+
+
+    <button md-button class="md-icon-button"
+            type="button"
+            (click)="selectPage(totalPages, $event)"
+            [disabled]="noNext()"
+            aria-label="Last">
+      <i md-icon class="material-icons">skip_next</i>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<table class="md-table" layout-fill>
+    <thead>
+    <tr>
+        <th class="md-column md-sort" *ngFor="let column of columns; let thInd = index">
+
+            <div *ngIf="!config || !column.sort">
+                <span>{{column.title}}</span>
+            </div>
+
+            <a *ngIf="config && column.sort"
+               [ng2TableViewSortable]="config"
+               [index]=thInd
+               [column]="column"
+               (sortChanged)="onChangeTable($event)">
+                <span>{{column.title}}</span>
+                <md-icon
+                        class="material-icons md-icon md-sort-icon"
+                        [ngClass]="{'md-desc': column.sortType === 'desc', 'md-asc': column.sortType === 'asc'}">
+                    arrow_downward
+                </md-icon>
+            </a>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody class="md-body">
+    <tr *ngFor="let row of rows" class="md-row">
+        <td *ngFor="let column of columns" class="md-cell">
+
+            <table-cell *ngIf="column.template" [cellTemplate]=column.template [cellData]="row"></table-cell>
+
+            <div *ngIf="!column.template">
+                <div class="md-cell-data"> {{row | nestedTableData:column.name | tableData:column}}
+                </div>
+                <a *ngIf="column.modal" (click)="showModal($event,getRowValue(row,column.name))">
+                    <span style="color: blue;font-size: 2em;">...</span>
+                </a>
+            </div>
+
+            <div *ngIf="column.template"></div>
+        </td>
+    </tr>
+    </tbody>
+</table>
