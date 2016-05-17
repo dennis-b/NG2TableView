@@ -4,11 +4,14 @@ NG2TableView for Angular2 apps
 
 # Usage & Demo
 
-
+...
 
 - - -
 
 ## Quick start
+...
 
 ## API
+
+...
 
