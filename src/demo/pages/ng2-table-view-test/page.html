@@ -1,0 +1,27 @@
+<div class="page">
+    <md-content layout-padding>
+
+        <div layout-gt-sm="row">
+            <md-input placeholder="Filter message"
+                      [column]="'index'"
+                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      (tableChanged)="onChangeTable(tableBuilder)">
+            </md-input>
+        </div>
+
+        <ng2TableView [config]="tableBuilder"
+                      (tableChanged)="onChangeTable($event)"
+                      [rows]="tableBuilder.rows"
+                      [columns]="tableBuilder.columns">
+        </ng2TableView>
+
+        <div class="text-center">
+            <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
+        </div>
+
+    </md-content>
+
+
+</div>
+
+

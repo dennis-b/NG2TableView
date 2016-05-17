@@ -1,0 +1,38 @@
+import {ColumnIfc} from "../../../../ng2-table-view";
+import {TableColumns} from "../../../../ng2-table-view";
+import {TableColumn} from "../../../../ng2-table-view";
+
+
+export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
+    .addCol(new TableColumn()
+        .setTitle("index")
+        .setName("index")
+        .setSort(true)
+    )
+    .addCol(new TableColumn()
+        .setTitle("Name")
+        .setName("name")
+        .setTemplate(require("./custom-template.html"))
+        .setSort(true)
+    )
+    .addCol(new TableColumn()
+        .setTitle("gender")
+        .setName("gender")
+    )
+    .addCol(new TableColumn()
+        .setTitle("company")
+        .setName("company")
+    )
+    .addCol(new TableColumn()
+        .setTitle("email")
+        .setName("email")
+    )
+    .addCol(new TableColumn()
+        .setTitle("latitude")
+        .setName("location.latitude")
+    )
+    .addCol(new TableColumn()
+        .setTitle("longitude")
+        .setName("location.longitude")
+    )
+    .getCols();
