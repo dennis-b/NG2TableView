@@ -5,15 +5,15 @@
  * Platform and Environment
  * our providers/directives/pipes
  */
-import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
+import {DIRECTIVES, PIPES, PROVIDERS} from '../platform/browser';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {ComponentRef} from '@angular/core';
 /*
  * App Component
  * our top level component that holds all of our components
  */
-import {App} from './demo/app';
-import {setInjector} from './demo/utils/app-utils';
+import {App} from './app';
+import {setInjector} from './utils/app-utils';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject

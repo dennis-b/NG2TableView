@@ -48,9 +48,9 @@ module.exports = {
    */
   entry: {
 
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'main': './src/main.browser.ts'
+    'polyfills': './src/demo/polyfills.ts',
+    'vendor': './src/demo/vendor.ts',
+    'main': './src/demo/main.browser.ts'
 
   },
 
@@ -165,7 +165,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'raw-loader',
-        exclude: [helpers.root('src/index.html')]
+        exclude: [helpers.root('src/demo/index.html')]
       }
 
     ]
@@ -231,7 +231,7 @@ module.exports = {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/demo/index.html',
       chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
     })
 
