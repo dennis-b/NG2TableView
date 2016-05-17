@@ -1,6 +1,6 @@
 import {TableConfigBuilder} from "./ConfigBuilder";
 import * as _ from 'underscore'
-import {TableColumn} from "./TableColumn";
+import {SelectTableColumn} from "./SelectTableColumn";
 
 export class TableView {
 
@@ -59,7 +59,8 @@ export class TableView {
 
     buildTable() {
         if (this.tableBuilder.selectable) {
-            var tableColumn = new TableColumn().setTemplate(require("../template/select.html"));
+            var tableColumn = new SelectTableColumn()
+                .setTemplate(require("../template/select.html"));
             this.tableBuilder.insertCol(0, tableColumn)
 
         }

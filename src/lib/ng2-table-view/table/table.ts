@@ -6,7 +6,6 @@ import {TableDataPipe} from "./pipes/table-data-pipe";
 import {NestedTableDataPipe} from "./pipes/nested-table-data-pipe";
 import {TableCell} from "./directive/table-cell-custom-template";
 
-
 @Component({
     selector: 'ng2-table, [ng2-table]',
     inputs: ['rows', 'columns', 'config'],
@@ -19,25 +18,18 @@ import {TableCell} from "./directive/table-cell-custom-template";
 export class Table {
     public rows:Array<any> = [];
     public config:any = {};
-
+    private allSelected:boolean = false;
     @Output() tableChanged:EventEmitter<any> = new EventEmitter();
 
     constructor(public element:ElementRef) {
     }
 
-    // constructor(public dialog:MdDialog, public element:ElementRef) {
-    // }
-
-    showModal(ev, val) {
-        // let config = new MdDialogConfig()
-        //   .parent(DOM.query('#popupContainer'))
-        //   .textContent(JSON.stringify(val))
-        //   .title('More data')
-        //   .ok('Ok')
-        //   .targetEvent(ev);
-        // this.dialog.open(MdDialogBasic, this.element, config);
-    };
-
+    onAllSelected() {
+        for (var i = 0; i < this.config.data.length; i++) {
+            var row = this.config.data[i];
+            row.selected = this.allSelected;
+        }
+    }
 
     onChangeTable(column:any) {
         this.tableChanged.emit({sorting: {columns: [column]}});

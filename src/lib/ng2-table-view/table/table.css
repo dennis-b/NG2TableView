@@ -453,6 +453,20 @@ table.md-table td.md-cell md-select > .md-select-value > span.md-select-icon:aft
   transform: scaleY(0.4) scaleX(0.8)
 }
 
-table.md-table .desc-order {
-
+table.md-table md-checkbox {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  min-width: 20px;
+  min-height: 20px;
+  margin-left: 0;
+  margin-right: 16px;
 }
