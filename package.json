@@ -1,6 +1,6 @@
 {
   "name": "NG2TableView",
-  "version": "",
+  "version": "1.0.0-beta.0",
   "description": "Table View for angular 2",
   "author": "Dennis Borshchevski <dennisborsh@gmail.com>",
   "homepage": "https://github.com/dennis-b/NG2TableView",
@@ -117,9 +117,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dennis-b/NG2TableView"
-  },
-  "engines": {
-    "node": ">= 4.2.1",
-    "npm": ">= 3"
   }
 }
