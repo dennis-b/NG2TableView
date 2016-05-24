@@ -43,9 +43,4 @@ export function main(initialHmrState?:any):Promise<any> {
  */
 
 
-/*
- * Hot Module Reload
- * experimental version by @gdi2290
- */
-let ngHmr = require('angular2-hmr');
-ngHmr.hotModuleReplacement(main, module);
+document.addEventListener('DOMContentLoaded', () => main());

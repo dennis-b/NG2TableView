@@ -1,6 +1,3 @@
-/**
- * @author: @AngularClass
- */
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
@@ -139,34 +136,34 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
      */
     // NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
-    new UglifyJsPlugin({
-      // beautify: true, //debug
-      // mangle: false, //debug
-      // dead_code: false, //debug
-      // unused: false, //debug
-      // deadCode: false, //debug
-      // compress: {
-      //   screw_ie8: true,
-      //   keep_fnames: true,
-      //   drop_debugger: false,
-      //   dead_code: false,
-      //   unused: false
-      // }, // debug
-      // comments: true, //debug
-
-      beautify: false, //prod
-
-      mangle: {
-        screw_ie8 : true,
-        keep_fnames: true
-      }, //prod
-
-      compress: {
-        screw_ie8: true
-      }, //prod
-
-      comments: false //prod
-    }),
+    // new UglifyJsPlugin({
+    //   beautify: true, //debug
+    //   mangle: false, //debug
+    //   dead_code: false, //debug
+    //   unused: false, //debug
+    //   deadCode: false, //debug
+    //   // compress: {
+    //   //   screw_ie8: true,
+    //   //   keep_fnames: true,
+    //   //   drop_debugger: false,
+    //   //   dead_code: false,
+    //   //   unused: false
+    //   // }, // debug
+    //   comments: true, //debug
+    //
+    //   // beautify: false, //prod
+    //
+    //   mangle: {
+    //     screw_ie8 : true,
+    //     keep_fnames: true
+    //   }, //prod
+    //
+    //   compress: {
+    //     screw_ie8: true
+    //   }, //prod
+    //
+    //   // comments: false //prod
+    // }),
 
     /**
      * Plugin: CompressionPlugin
@@ -181,18 +178,6 @@ module.exports = webpackMerge(commonConfig, {
     })
 
   ],
-
-  /**
-   * Static analysis linter for TypeScript advanced options configuration
-   * Description: An extensible linter for the TypeScript language.
-   *
-   * See: https://github.com/wbuchwalter/tslint-loader
-   */
-  tslint: {
-    emitErrors: true,
-    failOnHint: true,
-    resourcePath: 'src'
-  },
 
   /**
    * Html loader advanced options
