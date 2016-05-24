@@ -16,7 +16,7 @@
     "./src/**/*.ts",
     "./test/**/*.ts",
     "!./node_modules/**/*.ts",
-    "src/custom-typings.d.ts",
+    "src/demo/custom-typings.d.ts",
     "typings/browser.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {

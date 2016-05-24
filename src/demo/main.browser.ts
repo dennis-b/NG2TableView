@@ -8,6 +8,7 @@
 import {DIRECTIVES, PIPES, PROVIDERS} from '../platform/browser';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {ComponentRef} from '@angular/core';
+import {ENV_PROVIDERS} from '../platform/environment';
 /*
  * App Component
  * our top level component that holds all of our components
@@ -21,16 +22,17 @@ import {setInjector} from './utils/app-utils';
  */
 export function main(initialHmrState?:any):Promise<any> {
 
-  return bootstrap(App, [
-    ...PROVIDERS,
-    ...DIRECTIVES,
-    ...PIPES
-  ])
-    .then((appRef:ComponentRef<any>) => {
-      // store a reference to the application injector
-      setInjector(appRef.injector);
-    })
-    .catch(err => console.error(err));
+    return bootstrap(App, [
+        ...PROVIDERS,
+        ...DIRECTIVES,
+        ENV_PROVIDERS,
+        ...PIPES
+    ])
+        .then((appRef:ComponentRef<any>) => {
+            // store a reference to the application injector
+            setInjector(appRef.injector);
+        })
+        .catch(err => console.error(err));
 
 }
 
