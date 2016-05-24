@@ -8,6 +8,18 @@ NG2TableView for Angular2 apps
 
 - - -
 
+## Getting Started
+Make sure you have [Nodejs](https://nodejs.org/)
+
+
+Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/package/NG2TableView)
+
+  ```bash
+  npm i NG2TableView -S
+  ```
+  Or, you can [download it in a ZIP file](https://github.com/dennis-b/NG2TableView/archive/master.zip).
+
+
 ## Quick start
 ...
 
