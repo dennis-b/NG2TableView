@@ -20,7 +20,7 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
   Or, you can [download it in a ZIP file](https://github.com/dennis-b/NG2TableView/archive/master.zip).
 
 
-## Example
+## Usage
  ```bash
   import {Component} from '@angular/core';
   import {Http} from '@angular/http';
