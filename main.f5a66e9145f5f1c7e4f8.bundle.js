@@ -16227,7 +16227,7 @@ webpackJsonp([2], [
                 .setName("index")
                 .setSort(true))
             .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("Name")
+                .setTitle("Editable name ")
                 .setName("name")
                 .setTemplate(__webpack_require__(488))
                 .setSort(true))
@@ -16276,6 +16276,7 @@ webpackJsonp([2], [
                     .setData(this.users)
                     .addCols(columns_1.PageTableColumns)
                     .setPaging(true)
+                    .setItemsPerPage(5)
                     .setSelectable(true);
                 this.buildTable();
             };
@@ -16288,7 +16289,7 @@ webpackJsonp([2], [
                     template: __webpack_require__(489)
                 }),
                 router_deprecated_1.CanActivate(function (next) {
-                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
+                    return app_utils_1.Utils.getService(http_1.Http).get('demo/data/data.json')
                         .map(function (res) {
                             return res.json();
                         })
@@ -17123,7 +17124,7 @@ webpackJsonp([2], [
     /* 489 */
     /***/ function (module, exports) {
 
-        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n\r\n        <div layout-gt-sm=\"row\">\r\n            <md-input placeholder=\"Filter message\"\r\n                      [column]=\"'index'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable(tableBuilder)\">\r\n            </md-input>\r\n        </div>\r\n\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n    </md-content>\r\n\r\n\r\n</div>\r\n\r\n\r\n"
+        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n\r\n        <div layout-gt-sm=\"row\">\r\n            <md-input placeholder=\"filter by index\"\r\n                      class=\"col\"\r\n                      [column]=\"'index'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n\r\n            <md-input placeholder=\"filter by name\"\r\n                      class=\"col\"\r\n                      style=\"margin-left: 2em\"\r\n                      [column]=\"'name'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n        </div>\r\n\r\n\r\n\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n    </md-content>\r\n\r\n\r\n</div>\r\n\r\n\r\n"
 
         /***/
     },
