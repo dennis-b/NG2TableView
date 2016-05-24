@@ -4,7 +4,7 @@ NG2TableView for Angular2 apps
 
 # Usage & Demo
 
-...
+[http://dennis-b.github.io/NG2TableView/](http://dennis-b.github.io/NG2TableView/)
 
 - - -
 

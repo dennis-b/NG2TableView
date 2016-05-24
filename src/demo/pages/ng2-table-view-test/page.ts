@@ -36,6 +36,7 @@ export class Page extends TableView implements OnActivate {
             .setData(this.users)
             .addCols(PageTableColumns)
             .setPaging(true)
+            .setItemsPerPage(5)
             .setSelectable(true);
 
         this.buildTable();
