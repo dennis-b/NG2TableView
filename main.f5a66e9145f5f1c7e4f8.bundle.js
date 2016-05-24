@@ -16289,7 +16289,7 @@ webpackJsonp([2], [
                     template: __webpack_require__(489)
                 }),
                 router_deprecated_1.CanActivate(function (next) {
-                    return app_utils_1.Utils.getService(http_1.Http).get('demo/data/data.json')
+                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
                         .map(function (res) {
                             return res.json();
                         })
