@@ -1,5 +1,7 @@
 # NG2TableView [![npm version](https://badge.fury.io/js/NG2TableView.svg)](https://www.npmjs.com/package/NG2TableView)
-NG2TableView for Angular2 apps
+NG2TableView for Angular2 apps.
+
+Table component with sorting filtering, paging, custom cell template, nested values bind .. for Angular2, inspired by [ng2-table](https://github.com/valor-software/ng2-table)
 
 
 # Usage & Demo
