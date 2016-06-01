@@ -34,8 +34,6 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
   @Component({
       selector: "demo-page",
       directives: [NG_TABLE_VIEW_DIRECTIVES],
-      providers: [],
-      pipes: [],
       template: require('./page.html')
   })
   @CanActivate((next) => {
@@ -72,7 +70,50 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
 
   ```
 
-## API
+## PageTableColumns
+```bash
+export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
+    .addCol(new TableColumn()
+        .setTitle("index")
+        .setName("index")
+        .setSort(true)
+    )
+    .addCol(new TableColumn()
+        .setTitle("Editable name ")
+        .setName("name")
+        .setTemplate(require("./custom-template.html"))
+        .setSort(true)
+    )
+
+    ...
+```
+
+## page.html (template)
+
+```bash
+<div class="page">
+    <md-content layout-padding>
+        <div layout-gt-sm="row">
+            <md-input placeholder="filter by index"
+                      class="col"
+                      [column]="'index'"
+                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      (tableChanged)="onChangeTable($event)">
+            </md-input>
+        </div>
+
+        <ng2TableView [config]="tableBuilder"
+                      (tableChanged)="onChangeTable($event)"
+                      [rows]="tableBuilder.rows"
+                      [columns]="tableBuilder.columns">
+        </ng2TableView>
+
+        <div class="text-center">
+            <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
+        </div>
+    </md-content>
+</div>
+```
 
 ...
 
