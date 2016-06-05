@@ -1,4 +1,3 @@
-``
 import {MdButton, MdAnchor} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';

@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 import {CanActivate, OnActivate, ComponentInstruction} from "@angular/router-deprecated";
 import {PageTableColumns} from "./cols/columns";
 import {Utils} from "../../utils/app-utils";
-import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "../../../ng2-table-view";
+import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "NG2TableView";
 
 @Component({
     selector: "demo-page",
@@ -18,7 +18,7 @@ import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "../../../ng2-table-view";
         .toPromise()
         .then((data)=> next.routeData.data['users'] = data)
 })
-export class Page extends TableView implements OnActivate {
+export class CustomTable extends TableView implements OnActivate {
 
     private users:Array<any>;
 

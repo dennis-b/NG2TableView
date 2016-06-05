@@ -1,0 +1,15 @@
+<div class="page">
+    <md-content layout-padding>
+        <ng2TableView [config]="tableBuilder"
+                      (tableChanged)="onChangeTable($event)"
+                      [rows]="tableBuilder.rows"
+                      [columns]="tableBuilder.columns">
+        </ng2TableView>
+
+        <div class="text-center">
+            <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
+        </div>
+    </md-content>
+</div>
+
+

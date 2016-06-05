@@ -1,19 +1,14 @@
-import {ColumnIfc} from "../../../../ng2-table-view";
-import {TableColumns} from "../../../../ng2-table-view";
-import {TableColumn} from "../../../../ng2-table-view";
+import {ColumnIfc, TableColumns, TableColumn} from "NG2TableView";
 
 
 export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
     .addCol(new TableColumn()
         .setTitle("index")
         .setName("index")
-        .setSort(true)
     )
     .addCol(new TableColumn()
         .setTitle("Editable name ")
         .setName("name")
-        .setTemplate(require("./custom-template.html"))
-        .setSort(true)
     )
     .addCol(new TableColumn()
         .setTitle("gender")

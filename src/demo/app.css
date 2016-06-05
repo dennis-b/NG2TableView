@@ -1,0 +1,28 @@
+.page {
+    padding: 10px;
+}
+
+.page .site-sidenav {
+    /*background: #106CC8;*/
+    border-right: solid 1px gainsboro;
+}
+
+.page md-sidenav.md-sidenav-push {
+    /*background: #106CC8 !important;*/
+}
+
+.page .site-sidenav, .site-sidenav.md-locked-open-add-active, .page .site-sidenav.md-locked-open {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.page .docs-menu .menu-toggle-list a.md-button {
+    display: block;
+    padding: 0 16px 0 32px;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    font-weight: 500;
+}
+
+

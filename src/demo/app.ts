@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {RouteConfig, Router} from '@angular/router-deprecated';
-import {Page} from "./pages/ng2-table-view-test/page";
+import {CustomTable} from "./pages/custom-table/page";
+import {RegularTable} from "./pages/regular-table/regular-table";
 
 @Component({
     selector: 'app',
@@ -12,8 +13,9 @@ import {Page} from "./pages/ng2-table-view-test/page";
     template: require('./app.html')
 })
 @RouteConfig([
-    {path: '/', name: 'Index', component: Page, useAsDefault: true},
-    {path: '/home', name: 'Page', component: Page}
+    {path: '/', name: 'Index', component: CustomTable, useAsDefault: true},
+    {path: '/custom-table', name: 'CustomTable', component: CustomTable},
+    {path: '/regular-table', name: 'RegularTable', component: RegularTable}
 ])
 export class App {
     constructor() {
