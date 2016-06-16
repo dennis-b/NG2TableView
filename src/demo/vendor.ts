@@ -21,7 +21,6 @@ import 'rxjs/add/observable/forkJoin';
 import '@angular2-material/button';
 import '@angular2-material/card';
 import '@angular2-material/checkbox';
-import '@angular2-material/sidenav';
 import '@angular2-material/input';
 import '@angular2-material/icon';
 // look in src/platform/angular2-material2 and src/platform/providers
