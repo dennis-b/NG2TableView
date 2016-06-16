@@ -10,15 +10,15 @@ webpackJsonp([2], [
          * Platform and Environment
          * our providers/directives/pipes
          */
-        var browser_1 = __webpack_require__(481);
-        var platform_browser_dynamic_1 = __webpack_require__(308);
-        var environment_1 = __webpack_require__(484);
+        var browser_1 = __webpack_require__(501);
+        var platform_browser_dynamic_1 = __webpack_require__(313);
+        var environment_1 = __webpack_require__(504);
         /*
          * App Component
          * our top level component that holds all of our components
          */
-        var app_1 = __webpack_require__(466);
-        var app_utils_1 = __webpack_require__(221);
+        var app_1 = __webpack_require__(491);
+        var app_utils_1 = __webpack_require__(92);
         /*
          * Bootstrap our Angular app with a top level component `App` and inject
          * our Services and Providers into Angular's dependency injection
@@ -449,7 +449,7 @@ webpackJsonp([2], [
                         module && module.exports) {
                         try {
                             oldLocale = globalLocale._abbr;
-                            __webpack_require__(485)("./" + name);
+                            __webpack_require__(505)("./" + name);
                             // because defineLocale currently also sets the global locale, we
                             // want to undo that for lazy loaded locales
                             locale_locales__getSetGlobalLocale(oldLocale);
@@ -4121,7 +4121,7 @@ webpackJsonp([2], [
 
             }));
             /* WEBPACK VAR INJECTION */
-        }.call(exports, __webpack_require__(465)(module)))
+        }.call(exports, __webpack_require__(470)(module)))
 
         /***/
     },
@@ -4178,7 +4178,22 @@ webpackJsonp([2], [
     /* 53 */,
     /* 54 */,
     /* 55 */,
-    /* 56 */,
+    /* 56 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        function __export(m) {
+            for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+        }
+
+        /**
+         * Created by Dennis on 17/05/2016.
+         */
+        __export(__webpack_require__(478));
+
+
+        /***/
+    },
     /* 57 */,
     /* 58 */,
     /* 59 */,
@@ -4214,7 +4229,45 @@ webpackJsonp([2], [
     /* 89 */,
     /* 90 */,
     /* 91 */,
-    /* 92 */,
+    /* 92 */
+    /***/ function (module, exports) {
+
+        "use strict";
+        var appInjectorRef;
+        exports.setInjector = function (injector) {
+            if (injector) {
+                appInjectorRef = injector;
+            }
+        };
+        exports.getInjector = function () {
+            return appInjectorRef;
+        };
+        var Utils = (function () {
+            function Utils() {
+            }
+
+            Utils.getService = function (service) {
+                return appInjectorRef.get(service);
+            };
+            Utils.format = function (str) {
+                var args = [];
+                for (var _i = 1; _i < arguments.length; _i++) {
+                    args[_i - 1] = arguments[_i];
+                }
+                return str.replace(/{(\d+)}/g, function (match, number) {
+                    return typeof args[number] != 'undefined'
+                        ? args[number]
+                        : match;
+                });
+            };
+            Utils.appInjectorRef = exports.getInjector();
+            return Utils;
+        }());
+        exports.Utils = Utils;
+
+
+        /***/
+    },
     /* 93 */,
     /* 94 */,
     /* 95 */,
@@ -4258,58 +4311,8 @@ webpackJsonp([2], [
     /* 133 */,
     /* 134 */,
     /* 135 */,
-    /* 136 */
-    /***/ function (module, exports, __webpack_require__) {
-
-        "use strict";
-        function __export(m) {
-            for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-        }
-
-        /**
-         * Created by Dennis on 17/05/2016.
-         */
-        __export(__webpack_require__(469));
-
-
-        /***/
-    },
-    /* 137 */
-    /***/ function (module, exports, __webpack_require__) {
-
-        "use strict";
-        var button_1 = __webpack_require__(230);
-        var card_1 = __webpack_require__(231);
-        var checkbox_1 = __webpack_require__(232);
-        var sidenav_1 = __webpack_require__(239);
-        var input_1 = __webpack_require__(233);
-        var list_1 = __webpack_require__(234);
-        var radio_1 = __webpack_require__(237);
-        var progress_bar_1 = __webpack_require__(235);
-        var progress_circle_1 = __webpack_require__(236);
-        var toolbar_1 = __webpack_require__(240);
-        /*
-         * we are grouping the module so we only need to manage the imports in one location
-         */
-        exports.MATERIAL_PIPES = [];
-        exports.MATERIAL_DIRECTIVES = sidenav_1.MD_SIDENAV_DIRECTIVES.concat([
-            button_1.MdAnchor,
-            button_1.MdButton,
-            toolbar_1.MdToolbar,
-            checkbox_1.MdCheckbox,
-            radio_1.MdRadioButton,
-            radio_1.MdRadioGroup,
-            progress_circle_1.MdSpinner,
-            progress_bar_1.MdProgressBar,
-            progress_circle_1.MdProgressCircle
-        ], input_1.MD_INPUT_DIRECTIVES, list_1.MD_LIST_DIRECTIVES, card_1.MD_CARD_DIRECTIVES);
-        exports.MATERIAL_PROVIDERS = [
-            radio_1.MdRadioDispatcher
-        ];
-
-
-        /***/
-    },
+    /* 136 */,
+    /* 137 */,
     /* 138 */,
     /* 139 */,
     /* 140 */,
@@ -4393,35 +4396,20 @@ webpackJsonp([2], [
     /* 218 */,
     /* 219 */,
     /* 220 */,
-    /* 221 */
-    /***/ function (module, exports) {
-
-        "use strict";
-        var appInjectorRef;
-        exports.setInjector = function (injector) {
-            if (injector) {
-                appInjectorRef = injector;
-            }
-        };
-        exports.getInjector = function () {
-            return appInjectorRef;
-        };
-        var Utils = (function () {
-            function Utils() {
-            }
-
-            Utils.getService = function (service) {
-                return appInjectorRef.get(service);
-            };
-            Utils.appInjectorRef = exports.getInjector();
-            return Utils;
-        }());
-        exports.Utils = Utils;
-
-
-        /***/
-    },
-    /* 222 */
+    /* 221 */,
+    /* 222 */,
+    /* 223 */,
+    /* 224 */,
+    /* 225 */,
+    /* 226 */,
+    /* 227 */,
+    /* 228 */,
+    /* 229 */,
+    /* 230 */,
+    /* 231 */,
+    /* 232 */,
+    /* 233 */,
+    /* 234 */
     /***/ function (module, exports) {
 
         "use strict";
@@ -4493,7 +4481,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 223 */
+    /* 235 */
     /***/ function (module, exports) {
 
         "use strict";
@@ -4532,12 +4520,12 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 224 */
+    /* 236 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
         var core_1 = __webpack_require__(1);
-        var emitter_service_1 = __webpack_require__(478);
+        var emitter_service_1 = __webpack_require__(488);
         var Ng2TableViewSortable = (function () {
             function Ng2TableViewSortable() {
                 var _this = this;
@@ -4591,19 +4579,34 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 225 */,
-    /* 226 */,
-    /* 227 */,
-    /* 228 */,
-    /* 229 */,
-    /* 230 */,
-    /* 231 */,
-    /* 232 */,
-    /* 233 */,
-    /* 234 */,
-    /* 235 */,
-    /* 236 */,
-    /* 237 */,
+    /* 237 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var button_1 = __webpack_require__(142);
+        var card_1 = __webpack_require__(143);
+        var icon_1 = __webpack_require__(145);
+        var checkbox_1 = __webpack_require__(144);
+        var sidenav_1 = __webpack_require__(232);
+        var input_1 = __webpack_require__(146);
+        var tabs_1 = __webpack_require__(233);
+        /*
+         * we are grouping the module so we only need to manage the imports in one location
+         */
+        exports.MATERIAL_PIPES = [];
+        exports.MATERIAL_DIRECTIVES = sidenav_1.MD_SIDENAV_DIRECTIVES.concat([
+            button_1.MdAnchor,
+            button_1.MdButton,
+            icon_1.MdIcon,
+            checkbox_1.MdCheckbox
+        ], tabs_1.MD_TABS_DIRECTIVES, input_1.MD_INPUT_DIRECTIVES, card_1.MD_CARD_DIRECTIVES);
+        exports.MATERIAL_PROVIDERS = [
+            icon_1.MdIconRegistry
+        ];
+
+
+        /***/
+    },
     /* 238 */,
     /* 239 */,
     /* 240 */,
@@ -4730,7 +4733,12 @@ webpackJsonp([2], [
     /* 361 */,
     /* 362 */,
     /* 363 */,
-    /* 364 */
+    /* 364 */,
+    /* 365 */,
+    /* 366 */,
+    /* 367 */,
+    /* 368 */,
+    /* 369 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -4810,7 +4818,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 365 */
+    /* 370 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -4877,7 +4885,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 366 */
+    /* 371 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -4988,7 +4996,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 367 */
+    /* 372 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5053,7 +5061,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 368 */
+    /* 373 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5197,7 +5205,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 369 */
+    /* 374 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5309,7 +5317,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 370 */
+    /* 375 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5451,7 +5459,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 371 */
+    /* 376 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5548,7 +5556,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 372 */
+    /* 377 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5674,7 +5682,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 373 */
+    /* 378 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5800,7 +5808,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 374 */
+    /* 379 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -5919,7 +5927,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 375 */
+    /* 380 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6069,7 +6077,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 376 */
+    /* 381 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6157,7 +6165,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 377 */
+    /* 382 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6337,7 +6345,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 378 */
+    /* 383 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6407,7 +6415,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 379 */
+    /* 384 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6494,7 +6502,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 380 */
+    /* 385 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6561,7 +6569,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 381 */
+    /* 386 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6647,7 +6655,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 382 */
+    /* 387 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6732,7 +6740,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 383 */
+    /* 388 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6838,7 +6846,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 384 */
+    /* 389 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -6943,7 +6951,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 385 */
+    /* 390 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7016,7 +7024,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 386 */
+    /* 391 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7086,7 +7094,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 387 */
+    /* 392 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7160,7 +7168,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 388 */
+    /* 393 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7234,7 +7242,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 389 */
+    /* 394 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7307,7 +7315,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 390 */
+    /* 395 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7387,7 +7395,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 391 */
+    /* 396 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7475,7 +7483,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 392 */
+    /* 397 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7562,7 +7570,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 393 */
+    /* 398 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7635,7 +7643,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 394 */
+    /* 399 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7748,7 +7756,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 395 */
+    /* 400 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7864,7 +7872,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 396 */
+    /* 401 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7931,7 +7939,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 397 */
+    /* 402 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -7998,7 +8006,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 398 */
+    /* 403 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8069,7 +8077,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 399 */
+    /* 404 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8140,7 +8148,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 400 */
+    /* 405 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8220,7 +8228,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 401 */
+    /* 406 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8303,7 +8311,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 402 */
+    /* 407 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8387,7 +8395,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 403 */
+    /* 408 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8493,7 +8501,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 404 */
+    /* 409 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8624,7 +8632,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 405 */
+    /* 410 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8776,7 +8784,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 406 */
+    /* 411 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8894,7 +8902,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 407 */
+    /* 412 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -8996,7 +9004,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 408 */
+    /* 413 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9086,7 +9094,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 409 */
+    /* 414 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9221,7 +9229,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 410 */
+    /* 415 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9298,7 +9306,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 411 */
+    /* 416 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9381,7 +9389,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 412 */
+    /* 417 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9471,7 +9479,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 413 */
+    /* 418 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9567,7 +9575,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 414 */
+    /* 419 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9661,7 +9669,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 415 */
+    /* 420 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9726,7 +9734,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 416 */
+    /* 421 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9801,7 +9809,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 417 */
+    /* 422 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -9895,7 +9903,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 418 */
+    /* 423 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10041,7 +10049,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 419 */
+    /* 424 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10118,7 +10126,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 420 */
+    /* 425 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10247,7 +10255,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 421 */
+    /* 426 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10355,7 +10363,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 422 */
+    /* 427 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10473,7 +10481,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 423 */
+    /* 428 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10570,7 +10578,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 424 */
+    /* 429 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10658,7 +10666,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 425 */
+    /* 430 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10867,7 +10875,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 426 */
+    /* 431 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -10956,7 +10964,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 427 */
+    /* 432 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11045,7 +11053,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 428 */
+    /* 433 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11145,7 +11153,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 429 */
+    /* 434 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11215,7 +11223,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 430 */
+    /* 435 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11345,7 +11353,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 431 */
+    /* 436 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11425,7 +11433,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 432 */
+    /* 437 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11492,7 +11500,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 433 */
+    /* 438 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11623,7 +11631,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 434 */
+    /* 439 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11737,7 +11745,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 435 */
+    /* 440 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11805,7 +11813,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 436 */
+    /* 441 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11877,7 +11885,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 437 */
+    /* 442 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -11959,7 +11967,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 438 */
+    /* 443 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12143,7 +12151,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 439 */
+    /* 444 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12210,7 +12218,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 440 */
+    /* 445 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12288,7 +12296,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 441 */
+    /* 446 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12447,7 +12455,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 442 */
+    /* 447 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12616,7 +12624,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 443 */
+    /* 448 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12693,7 +12701,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 444 */
+    /* 449 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12810,7 +12818,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 445 */
+    /* 450 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -12927,7 +12935,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 446 */
+    /* 451 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13022,7 +13030,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 447 */
+    /* 452 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13098,7 +13106,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 448 */
+    /* 453 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13164,7 +13172,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 449 */
+    /* 454 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13300,7 +13308,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 450 */
+    /* 455 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13396,7 +13404,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 451 */
+    /* 456 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13470,7 +13478,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 452 */
+    /* 457 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13539,7 +13547,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 453 */
+    /* 458 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13666,7 +13674,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 454 */
+    /* 459 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13763,7 +13771,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 455 */
+    /* 460 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13860,7 +13868,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 456 */
+    /* 461 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13925,7 +13933,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 457 */
+    /* 462 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -13990,7 +13998,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 458 */
+    /* 463 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14146,7 +14154,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 459 */
+    /* 464 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14211,7 +14219,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 460 */
+    /* 465 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14297,7 +14305,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 461 */
+    /* 466 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14372,7 +14380,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 462 */
+    /* 467 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14506,7 +14514,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 463 */
+    /* 468 */
     /***/ function (module, exports, __webpack_require__) {
 
         //! moment.js locale configuration
@@ -14614,7 +14622,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 464 */
+    /* 469 */
     /***/ function (module, exports, __webpack_require__) {
 
         var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -16178,136 +16186,15 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 465 */,
-    /* 466 */
-    /***/ function (module, exports, __webpack_require__) {
-
-        "use strict";
-        var core_1 = __webpack_require__(1);
-        var router_deprecated_1 = __webpack_require__(95);
-        var page_1 = __webpack_require__(468);
-        var App = (function () {
-            function App() {
-            }
-
-            App.prototype.ngOnInit = function () {
-            };
-            App = __decorate([
-                core_1.Component({
-                    selector: 'app',
-                    pipes: [],
-                    providers: [],
-                    directives: [],
-                    encapsulation: core_1.ViewEncapsulation.None,
-                    styles: [__webpack_require__(486)],
-                    template: __webpack_require__(487)
-                }),
-                router_deprecated_1.RouteConfig([
-                    {path: '/', name: 'Index', component: page_1.Page, useAsDefault: true},
-                    {path: '/home', name: 'Page', component: page_1.Page}
-                ]),
-                __metadata('design:paramtypes', [])
-            ], App);
-            return App;
-        }());
-        exports.App = App;
-
-
-        /***/
-    },
-    /* 467 */
-    /***/ function (module, exports, __webpack_require__) {
-
-        "use strict";
-        var ng2_table_view_1 = __webpack_require__(136);
-        var ng2_table_view_2 = __webpack_require__(136);
-        exports.PageTableColumns = new ng2_table_view_1.TableColumns()
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("index")
-                .setName("index")
-                .setSort(true))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("Editable name ")
-                .setName("name")
-                .setTemplate(__webpack_require__(488))
-                .setSort(true))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("gender")
-                .setName("gender"))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("company")
-                .setName("company"))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("email")
-                .setName("email"))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("latitude")
-                .setName("location.latitude"))
-            .addCol(new ng2_table_view_2.TableColumn()
-                .setTitle("longitude")
-                .setName("location.longitude"))
-            .getCols();
-
-
-        /***/
-    },
-    /* 468 */
-    /***/ function (module, exports, __webpack_require__) {
-
-        "use strict";
-        var core_1 = __webpack_require__(1);
-        var http_1 = __webpack_require__(183);
-        var router_deprecated_1 = __webpack_require__(95);
-        var columns_1 = __webpack_require__(467);
-        var app_utils_1 = __webpack_require__(221);
-        var ng2_table_view_1 = __webpack_require__(136);
-        var Page = (function (_super) {
-            __extends(Page, _super);
-            function Page() {
-                _super.call(this, []);
-            }
-
-            Page.prototype.routerOnActivate = function (next, prev) {
-                this.users = next.routeData.data['users'];
-                return Promise.resolve(true);
-            };
-            Page.prototype.ngOnInit = function () {
-                this.getBuilder()
-                    .setData(this.users)
-                    .addCols(columns_1.PageTableColumns)
-                    .setPaging(true)
-                    .setItemsPerPage(5)
-                    .setSelectable(true);
-                this.buildTable();
-            };
-            Page = __decorate([
-                core_1.Component({
-                    selector: "demo-page",
-                    directives: [ng2_table_view_1.NG_TABLE_VIEW_DIRECTIVES],
-                    providers: [],
-                    pipes: [],
-                    template: __webpack_require__(489)
-                }),
-                router_deprecated_1.CanActivate(function (next) {
-                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
-                        .map(function (res) {
-                            return res.json();
-                        })
-                        .toPromise()
-                        .then(function (data) {
-                            return next.routeData.data['users'] = data;
-                        });
-                }),
-                __metadata('design:paramtypes', [])
-            ], Page);
-            return Page;
-        }(ng2_table_view_1.TableView));
-        exports.Page = Page;
-
-
-        /***/
-    },
-    /* 469 */
+    /* 470 */,
+    /* 471 */,
+    /* 472 */,
+    /* 473 */,
+    /* 474 */,
+    /* 475 */,
+    /* 476 */,
+    /* 477 */,
+    /* 478 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16315,24 +16202,40 @@ webpackJsonp([2], [
             for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
         }
 
-        var table_1 = __webpack_require__(479);
-        var sorting_1 = __webpack_require__(224);
-        var paging_1 = __webpack_require__(474);
-        var filtering_1 = __webpack_require__(473);
-        exports.NG_TABLE_VIEW_DIRECTIVES = [table_1.NgTableView, filtering_1.Ng2TableViewFilter, paging_1.NgTableViewPaging, sorting_1.Ng2TableViewSortable];
-        __export(__webpack_require__(222));
-        __export(__webpack_require__(223));
-        __export(__webpack_require__(471));
-        __export(__webpack_require__(472));
+        /**
+         * Created by Dennis on 17/05/2016.
+         */
+        __export(__webpack_require__(479));
 
 
         /***/
     },
-    /* 470 */
+    /* 479 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
-        var TableColumn_1 = __webpack_require__(223);
+        function __export(m) {
+            for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+        }
+
+        var table_1 = __webpack_require__(489);
+        var sorting_1 = __webpack_require__(236);
+        var paging_1 = __webpack_require__(484);
+        var filtering_1 = __webpack_require__(483);
+        exports.NG_TABLE_VIEW_DIRECTIVES = [table_1.NgTableView, filtering_1.Ng2TableViewFilter, paging_1.NgTableViewPaging, sorting_1.Ng2TableViewSortable];
+        __export(__webpack_require__(234));
+        __export(__webpack_require__(235));
+        __export(__webpack_require__(481));
+        __export(__webpack_require__(482));
+
+
+        /***/
+    },
+    /* 480 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var TableColumn_1 = __webpack_require__(235);
         var SelectTableColumn = (function (_super) {
             __extends(SelectTableColumn, _super);
             function SelectTableColumn() {
@@ -16347,7 +16250,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 471 */
+    /* 481 */
     /***/ function (module, exports) {
 
         "use strict";
@@ -16370,13 +16273,13 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 472 */
+    /* 482 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
-        var ConfigBuilder_1 = __webpack_require__(222);
-        var _ = __webpack_require__(464);
-        var SelectTableColumn_1 = __webpack_require__(470);
+        var ConfigBuilder_1 = __webpack_require__(234);
+        var _ = __webpack_require__(469);
+        var SelectTableColumn_1 = __webpack_require__(480);
         var TableView = (function () {
             function TableView(data) {
                 this.tableData = [];
@@ -16433,7 +16336,7 @@ webpackJsonp([2], [
             TableView.prototype.buildTable = function () {
                 if (this.tableBuilder.selectable) {
                     var tableColumn = new SelectTableColumn_1.SelectTableColumn()
-                        .setTemplate(__webpack_require__(494));
+                        .setTemplate(__webpack_require__(523));
                     this.tableBuilder.insertCol(0, tableColumn);
                 }
                 this.onChangeTable();
@@ -16457,7 +16360,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 473 */
+    /* 483 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16509,12 +16412,12 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 474 */
+    /* 484 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
         var core_1 = __webpack_require__(1);
-        var _ = __webpack_require__(464);
+        var _ = __webpack_require__(469);
         var NgTableViewPaging = (function () {
             function NgTableViewPaging() {
                 this.config = {};
@@ -16565,8 +16468,8 @@ webpackJsonp([2], [
                 core_1.Component({
                     selector: 'ngTableViewPaging',
                     outputs: ['pageChanged'],
-                    template: __webpack_require__(490),
-                    styles: [__webpack_require__(491)]
+                    template: __webpack_require__(519),
+                    styles: [__webpack_require__(520)]
                 }),
                 __metadata('design:paramtypes', [])
             ], NgTableViewPaging);
@@ -16577,7 +16480,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 475 */
+    /* 485 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16635,7 +16538,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 476 */
+    /* 486 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16660,7 +16563,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 477 */
+    /* 487 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16695,7 +16598,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 478 */
+    /* 488 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16725,17 +16628,17 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 479 */
+    /* 489 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
         var core_1 = __webpack_require__(1);
-        var angular2_material2_1 = __webpack_require__(137);
-        var sorting_1 = __webpack_require__(224);
-        var common_1 = __webpack_require__(29);
-        var table_data_pipe_1 = __webpack_require__(477);
-        var nested_table_data_pipe_1 = __webpack_require__(476);
-        var table_cell_custom_template_1 = __webpack_require__(475);
+        var angular2_material2_1 = __webpack_require__(490);
+        var sorting_1 = __webpack_require__(236);
+        var common_1 = __webpack_require__(34);
+        var table_data_pipe_1 = __webpack_require__(487);
+        var nested_table_data_pipe_1 = __webpack_require__(486);
+        var table_cell_custom_template_1 = __webpack_require__(485);
         var NgTableView = (function () {
             function NgTableView(element) {
                 this.element = element;
@@ -16764,8 +16667,8 @@ webpackJsonp([2], [
                     inputs: ['rows', 'columns', 'config'],
                     directives: [sorting_1.Ng2TableViewSortable, table_cell_custom_template_1.TableCell, common_1.NgClass, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, angular2_material2_1.MATERIAL_DIRECTIVES],
                     pipes: [table_data_pipe_1.TableDataPipe, nested_table_data_pipe_1.NestedTableDataPipe],
-                    styles: [__webpack_require__(492)],
-                    template: __webpack_require__(493)
+                    styles: [__webpack_require__(521)],
+                    template: __webpack_require__(522)
                 }),
                 __metadata('design:paramtypes', [core_1.ElementRef])
             ], NgTableView);
@@ -16776,7 +16679,447 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 480 */
+    /* 490 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var button_1 = __webpack_require__(142);
+        var card_1 = __webpack_require__(143);
+        var icon_1 = __webpack_require__(145);
+        var checkbox_1 = __webpack_require__(144);
+        var input_1 = __webpack_require__(146);
+        exports.MATERIAL_DIRECTIVES = [
+            button_1.MdAnchor,
+            button_1.MdButton,
+            icon_1.MdIcon,
+            checkbox_1.MdCheckbox
+        ].concat(input_1.MD_INPUT_DIRECTIVES, card_1.MD_CARD_DIRECTIVES);
+        exports.MATERIAL_PROVIDERS = [
+            icon_1.MdIconRegistry
+        ];
+
+
+        /***/
+    },
+    /* 491 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var core_1 = __webpack_require__(1);
+        var router_deprecated_1 = __webpack_require__(60);
+        var page_1 = __webpack_require__(493);
+        var regular_table_1 = __webpack_require__(499);
+        var filter_table_1 = __webpack_require__(497);
+        var custom_template_1 = __webpack_require__(495);
+        var App = (function () {
+            function App() {
+            }
+
+            App.prototype.ngOnInit = function () {
+            };
+            App = __decorate([
+                core_1.Component({
+                    selector: 'app',
+                    pipes: [],
+                    providers: [],
+                    directives: [],
+                    encapsulation: core_1.ViewEncapsulation.None,
+                    styles: [__webpack_require__(524)],
+                    template: __webpack_require__(525)
+                }),
+                router_deprecated_1.RouteConfig([
+                    {path: '/', name: 'Index', component: page_1.CustomTable, useAsDefault: true},
+                    {path: '/table-view', name: 'TableView', component: page_1.CustomTable},
+                    {path: '/pagination-table', name: 'RegularTable', component: regular_table_1.RegularTable},
+                    {path: '/filter-table', name: 'FilterTable', component: filter_table_1.FilterTable},
+                    {
+                        path: '/custom-template-table',
+                        name: 'CustomTemplateTable',
+                        component: custom_template_1.CustomTemplateTable
+                    }
+                ]),
+                __metadata('design:paramtypes', [])
+            ], App);
+            return App;
+        }());
+        exports.App = App;
+
+
+        /***/
+    },
+    /* 492 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var NG2TableView_1 = __webpack_require__(56);
+        exports.PageTableColumns = new NG2TableView_1.TableColumns()
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("index")
+                .setName("index")
+                .setSort(true))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("Editable name ")
+                .setName("name")
+                .setTemplate(__webpack_require__(526))
+                .setSort(true))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("gender")
+                .setName("gender"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("company")
+                .setName("company"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("email")
+                .setName("email"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("latitude")
+                .setName("location.latitude"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("longitude")
+                .setName("location.longitude"))
+            .getCols();
+
+
+        /***/
+    },
+    /* 493 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var core_1 = __webpack_require__(1);
+        var http_1 = __webpack_require__(69);
+        var router_deprecated_1 = __webpack_require__(60);
+        var columns_1 = __webpack_require__(492);
+        var app_utils_1 = __webpack_require__(92);
+        var NG2TableView_1 = __webpack_require__(56);
+        var html = __webpack_require__(506);
+        var ts = __webpack_require__(512);
+        var cols = __webpack_require__(511);
+        var template = __webpack_require__(527);
+        var CustomTable = (function (_super) {
+            __extends(CustomTable, _super);
+            function CustomTable() {
+                _super.call(this, []);
+            }
+
+            CustomTable.prototype.routerOnActivate = function (next, prev) {
+                this.users = next.routeData.data['users'];
+                return Promise.resolve(true);
+            };
+            CustomTable.prototype.ngOnInit = function () {
+                this.getBuilder()
+                    .setData(this.users)
+                    .addCols(columns_1.PageTableColumns)
+                    .setPaging(true)
+                    .setItemsPerPage(5)
+                    .setSelectable(true);
+                this.buildTable();
+            };
+            CustomTable = __decorate([
+                core_1.Component({
+                    selector: "demo-page",
+                    directives: [NG2TableView_1.NG_TABLE_VIEW_DIRECTIVES],
+                    providers: [],
+                    pipes: [],
+                    template: app_utils_1.Utils.format(template, html, ts, cols)
+                }),
+                router_deprecated_1.CanActivate(function (next) {
+                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
+                        .map(function (res) {
+                            return res.json();
+                        })
+                        .toPromise()
+                        .then(function (data) {
+                            return next.routeData.data['users'] = data;
+                        });
+                }),
+                __metadata('design:paramtypes', [])
+            ], CustomTable);
+            return CustomTable;
+        }(NG2TableView_1.TableView));
+        exports.CustomTable = CustomTable;
+
+
+        /***/
+    },
+    /* 494 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var NG2TableView_1 = __webpack_require__(56);
+        exports.PageTableColumns = new NG2TableView_1.TableColumns()
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("index")
+                .setName("index"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("Editable name ")
+                .setName("name")
+                .setTemplate(__webpack_require__(528)))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("gender")
+                .setName("gender"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("company")
+                .setName("company"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("email")
+                .setName("email"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("latitude")
+                .setName("location.latitude"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("longitude")
+                .setName("location.longitude"))
+            .getCols();
+
+
+        /***/
+    },
+    /* 495 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var core_1 = __webpack_require__(1);
+        var http_1 = __webpack_require__(69);
+        var router_deprecated_1 = __webpack_require__(60);
+        var columns_1 = __webpack_require__(494);
+        var app_utils_1 = __webpack_require__(92);
+        var NG2TableView_1 = __webpack_require__(56);
+        var html = __webpack_require__(508);
+        var cellHtml = __webpack_require__(507);
+        var ts = __webpack_require__(514);
+        var cols = __webpack_require__(513);
+        var template = __webpack_require__(529);
+        var CustomTemplateTable = (function (_super) {
+            __extends(CustomTemplateTable, _super);
+            function CustomTemplateTable() {
+                _super.call(this, []);
+            }
+
+            CustomTemplateTable.prototype.routerOnActivate = function (next, prev) {
+                this.users = next.routeData.data['users'];
+                return Promise.resolve(true);
+            };
+            CustomTemplateTable.prototype.ngOnInit = function () {
+                this.getBuilder()
+                    .setData(this.users)
+                    .addCols(columns_1.PageTableColumns)
+                    .setPaging(true)
+                    .setItemsPerPage(5);
+                this.buildTable();
+            };
+            CustomTemplateTable = __decorate([
+                core_1.Component({
+                    selector: "filter-table",
+                    directives: [NG2TableView_1.NG_TABLE_VIEW_DIRECTIVES],
+                    providers: [],
+                    pipes: [],
+                    template: app_utils_1.Utils.format(template, html, ts, cols, cellHtml)
+                }),
+                router_deprecated_1.CanActivate(function (next) {
+                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
+                        .map(function (res) {
+                            return res.json();
+                        })
+                        .toPromise()
+                        .then(function (data) {
+                            return next.routeData.data['users'] = data;
+                        });
+                }),
+                __metadata('design:paramtypes', [])
+            ], CustomTemplateTable);
+            return CustomTemplateTable;
+        }(NG2TableView_1.TableView));
+        exports.CustomTemplateTable = CustomTemplateTable;
+
+
+        /***/
+    },
+    /* 496 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var NG2TableView_1 = __webpack_require__(56);
+        exports.PageTableColumns = new NG2TableView_1.TableColumns()
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("index")
+                .setName("index")
+                .setSort(true))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("Editable name ")
+                .setName("name")
+                .setSort(true))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("gender")
+                .setName("gender"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("company")
+                .setName("company"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("email")
+                .setName("email"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("latitude")
+                .setName("location.latitude"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("longitude")
+                .setName("location.longitude"))
+            .getCols();
+
+
+        /***/
+    },
+    /* 497 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var core_1 = __webpack_require__(1);
+        var http_1 = __webpack_require__(69);
+        var router_deprecated_1 = __webpack_require__(60);
+        var columns_1 = __webpack_require__(496);
+        var app_utils_1 = __webpack_require__(92);
+        var NG2TableView_1 = __webpack_require__(56);
+        var html = __webpack_require__(509);
+        var ts = __webpack_require__(516);
+        var cols = __webpack_require__(515);
+        var template = __webpack_require__(530);
+        var FilterTable = (function (_super) {
+            __extends(FilterTable, _super);
+            function FilterTable() {
+                _super.call(this, []);
+            }
+
+            FilterTable.prototype.routerOnActivate = function (next, prev) {
+                this.users = next.routeData.data['users'];
+                return Promise.resolve(true);
+            };
+            FilterTable.prototype.ngOnInit = function () {
+                this.getBuilder()
+                    .setData(this.users)
+                    .addCols(columns_1.PageTableColumns)
+                    .setPaging(true)
+                    .setItemsPerPage(5);
+                this.buildTable();
+            };
+            FilterTable = __decorate([
+                core_1.Component({
+                    selector: "filter-table",
+                    directives: [NG2TableView_1.NG_TABLE_VIEW_DIRECTIVES],
+                    providers: [],
+                    pipes: [],
+                    template: app_utils_1.Utils.format(template, html, ts, cols)
+                }),
+                router_deprecated_1.CanActivate(function (next) {
+                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
+                        .map(function (res) {
+                            return res.json();
+                        })
+                        .toPromise()
+                        .then(function (data) {
+                            return next.routeData.data['users'] = data;
+                        });
+                }),
+                __metadata('design:paramtypes', [])
+            ], FilterTable);
+            return FilterTable;
+        }(NG2TableView_1.TableView));
+        exports.FilterTable = FilterTable;
+
+
+        /***/
+    },
+    /* 498 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var NG2TableView_1 = __webpack_require__(56);
+        exports.PageTableColumns = new NG2TableView_1.TableColumns()
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("index")
+                .setName("index"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("Editable name ")
+                .setName("name"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("gender")
+                .setName("gender"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("company")
+                .setName("company"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("email")
+                .setName("email"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("latitude")
+                .setName("location.latitude"))
+            .addCol(new NG2TableView_1.TableColumn()
+                .setTitle("longitude")
+                .setName("location.longitude"))
+            .getCols();
+
+
+        /***/
+    },
+    /* 499 */
+    /***/ function (module, exports, __webpack_require__) {
+
+        "use strict";
+        var core_1 = __webpack_require__(1);
+        var http_1 = __webpack_require__(69);
+        var router_deprecated_1 = __webpack_require__(60);
+        var columns_1 = __webpack_require__(498);
+        var app_utils_1 = __webpack_require__(92);
+        var NG2TableView_1 = __webpack_require__(56);
+        var html = __webpack_require__(510);
+        var ts = __webpack_require__(518);
+        var cols = __webpack_require__(517);
+        var template = __webpack_require__(531);
+        var RegularTable = (function (_super) {
+            __extends(RegularTable, _super);
+            function RegularTable() {
+                _super.call(this, []);
+            }
+
+            RegularTable.prototype.routerOnActivate = function (next, prev) {
+                this.users = next.routeData.data['users'];
+                return Promise.resolve(true);
+            };
+            RegularTable.prototype.ngOnInit = function () {
+                this.getBuilder()
+                    .setData(this.users)
+                    .addCols(columns_1.PageTableColumns)
+                    .setPaging(true)
+                    .setItemsPerPage(5);
+                this.buildTable();
+            };
+            RegularTable = __decorate([
+                core_1.Component({
+                    selector: "demo-page",
+                    directives: [NG2TableView_1.NG_TABLE_VIEW_DIRECTIVES],
+                    providers: [],
+                    pipes: [],
+                    template: app_utils_1.Utils.format(template, html, ts, cols)
+                }),
+                router_deprecated_1.CanActivate(function (next) {
+                    return app_utils_1.Utils.getService(http_1.Http).get('data.json')
+                        .map(function (res) {
+                            return res.json();
+                        })
+                        .toPromise()
+                        .then(function (data) {
+                            return next.routeData.data['users'] = data;
+                        });
+                }),
+                __metadata('design:paramtypes', [])
+            ], RegularTable);
+            return RegularTable;
+        }(NG2TableView_1.TableView));
+        exports.RegularTable = RegularTable;
+
+
+        /***/
+    },
+    /* 500 */
     /***/ function (module, exports, __webpack_require__) {
 
         /*
@@ -16785,8 +17128,8 @@ webpackJsonp([2], [
         "use strict";
         var core_1 = __webpack_require__(1);
         // Angular 2 Router
-        var router_deprecated_1 = __webpack_require__(95);
-        var angular2_material2_1 = __webpack_require__(137);
+        var router_deprecated_1 = __webpack_require__(60);
+        var angular2_material2_1 = __webpack_require__(237);
         // application_directives: directives that are global through out the application
         exports.APPLICATION_DIRECTIVES = router_deprecated_1.ROUTER_DIRECTIVES.concat(angular2_material2_1.MATERIAL_DIRECTIVES);
         exports.DIRECTIVES = [
@@ -16796,7 +17139,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 481 */
+    /* 501 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16804,14 +17147,14 @@ webpackJsonp([2], [
             for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
         }
 
-        __export(__webpack_require__(480));
-        __export(__webpack_require__(482));
-        __export(__webpack_require__(483));
+        __export(__webpack_require__(500));
+        __export(__webpack_require__(502));
+        __export(__webpack_require__(503));
 
 
         /***/
     },
-    /* 482 */
+    /* 502 */
     /***/ function (module, exports, __webpack_require__) {
 
         /*
@@ -16828,7 +17171,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 483 */
+    /* 503 */
     /***/ function (module, exports, __webpack_require__) {
 
         /*
@@ -16837,12 +17180,12 @@ webpackJsonp([2], [
         "use strict";
         var core_1 = __webpack_require__(1);
         // Angular 2
-        var common_1 = __webpack_require__(29);
+        var common_1 = __webpack_require__(34);
         // Angular 2 Http
-        var http_1 = __webpack_require__(183);
+        var http_1 = __webpack_require__(69);
         // Angular 2 Router
-        var router_deprecated_1 = __webpack_require__(95);
-        var angular2_material2_1 = __webpack_require__(137);
+        var router_deprecated_1 = __webpack_require__(60);
+        var angular2_material2_1 = __webpack_require__(237);
         /*
          * Application Providers/Directives/Pipes
          * providers/directives/pipes that only live in our browser environment
@@ -16855,7 +17198,7 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 484 */
+    /* 504 */
     /***/ function (module, exports, __webpack_require__) {
 
         "use strict";
@@ -16876,210 +17219,210 @@ webpackJsonp([2], [
 
         /***/
     },
-    /* 485 */
+    /* 505 */
     /***/ function (module, exports, __webpack_require__) {
 
         var map = {
-            "./af": 364,
-            "./af.js": 364,
-            "./ar": 368,
-            "./ar-ma": 365,
-            "./ar-ma.js": 365,
-            "./ar-sa": 366,
-            "./ar-sa.js": 366,
-            "./ar-tn": 367,
-            "./ar-tn.js": 367,
-            "./ar.js": 368,
-            "./az": 369,
-            "./az.js": 369,
-            "./be": 370,
-            "./be.js": 370,
-            "./bg": 371,
-            "./bg.js": 371,
-            "./bn": 372,
-            "./bn.js": 372,
-            "./bo": 373,
-            "./bo.js": 373,
-            "./br": 374,
-            "./br.js": 374,
-            "./bs": 375,
-            "./bs.js": 375,
-            "./ca": 376,
-            "./ca.js": 376,
-            "./cs": 377,
-            "./cs.js": 377,
-            "./cv": 378,
-            "./cv.js": 378,
-            "./cy": 379,
-            "./cy.js": 379,
-            "./da": 380,
-            "./da.js": 380,
-            "./de": 382,
-            "./de-at": 381,
-            "./de-at.js": 381,
-            "./de.js": 382,
-            "./dv": 383,
-            "./dv.js": 383,
-            "./el": 384,
-            "./el.js": 384,
-            "./en-au": 385,
-            "./en-au.js": 385,
-            "./en-ca": 386,
-            "./en-ca.js": 386,
-            "./en-gb": 387,
-            "./en-gb.js": 387,
-            "./en-ie": 388,
-            "./en-ie.js": 388,
-            "./en-nz": 389,
-            "./en-nz.js": 389,
-            "./eo": 390,
-            "./eo.js": 390,
-            "./es": 391,
-            "./es.js": 391,
-            "./et": 392,
-            "./et.js": 392,
-            "./eu": 393,
-            "./eu.js": 393,
-            "./fa": 394,
-            "./fa.js": 394,
-            "./fi": 395,
-            "./fi.js": 395,
-            "./fo": 396,
-            "./fo.js": 396,
-            "./fr": 399,
-            "./fr-ca": 397,
-            "./fr-ca.js": 397,
-            "./fr-ch": 398,
-            "./fr-ch.js": 398,
-            "./fr.js": 399,
-            "./fy": 400,
-            "./fy.js": 400,
-            "./gd": 401,
-            "./gd.js": 401,
-            "./gl": 402,
-            "./gl.js": 402,
-            "./he": 403,
-            "./he.js": 403,
-            "./hi": 404,
-            "./hi.js": 404,
-            "./hr": 405,
-            "./hr.js": 405,
-            "./hu": 406,
-            "./hu.js": 406,
-            "./hy-am": 407,
-            "./hy-am.js": 407,
-            "./id": 408,
-            "./id.js": 408,
-            "./is": 409,
-            "./is.js": 409,
-            "./it": 410,
-            "./it.js": 410,
-            "./ja": 411,
-            "./ja.js": 411,
-            "./jv": 412,
-            "./jv.js": 412,
-            "./ka": 413,
-            "./ka.js": 413,
-            "./kk": 414,
-            "./kk.js": 414,
-            "./km": 415,
-            "./km.js": 415,
-            "./ko": 416,
-            "./ko.js": 416,
-            "./ky": 417,
-            "./ky.js": 417,
-            "./lb": 418,
-            "./lb.js": 418,
-            "./lo": 419,
-            "./lo.js": 419,
-            "./lt": 420,
-            "./lt.js": 420,
-            "./lv": 421,
-            "./lv.js": 421,
-            "./me": 422,
-            "./me.js": 422,
-            "./mk": 423,
-            "./mk.js": 423,
-            "./ml": 424,
-            "./ml.js": 424,
-            "./mr": 425,
-            "./mr.js": 425,
-            "./ms": 427,
-            "./ms-my": 426,
-            "./ms-my.js": 426,
-            "./ms.js": 427,
-            "./my": 428,
-            "./my.js": 428,
-            "./nb": 429,
-            "./nb.js": 429,
-            "./ne": 430,
-            "./ne.js": 430,
-            "./nl": 431,
-            "./nl.js": 431,
-            "./nn": 432,
-            "./nn.js": 432,
-            "./pa-in": 433,
-            "./pa-in.js": 433,
-            "./pl": 434,
-            "./pl.js": 434,
-            "./pt": 436,
-            "./pt-br": 435,
-            "./pt-br.js": 435,
-            "./pt.js": 436,
-            "./ro": 437,
-            "./ro.js": 437,
-            "./ru": 438,
-            "./ru.js": 438,
-            "./se": 439,
-            "./se.js": 439,
-            "./si": 440,
-            "./si.js": 440,
-            "./sk": 441,
-            "./sk.js": 441,
-            "./sl": 442,
-            "./sl.js": 442,
-            "./sq": 443,
-            "./sq.js": 443,
-            "./sr": 445,
-            "./sr-cyrl": 444,
-            "./sr-cyrl.js": 444,
-            "./sr.js": 445,
-            "./ss": 446,
-            "./ss.js": 446,
-            "./sv": 447,
-            "./sv.js": 447,
-            "./sw": 448,
-            "./sw.js": 448,
-            "./ta": 449,
-            "./ta.js": 449,
-            "./te": 450,
-            "./te.js": 450,
-            "./th": 451,
-            "./th.js": 451,
-            "./tl-ph": 452,
-            "./tl-ph.js": 452,
-            "./tlh": 453,
-            "./tlh.js": 453,
-            "./tr": 454,
-            "./tr.js": 454,
-            "./tzl": 455,
-            "./tzl.js": 455,
-            "./tzm": 457,
-            "./tzm-latn": 456,
-            "./tzm-latn.js": 456,
-            "./tzm.js": 457,
-            "./uk": 458,
-            "./uk.js": 458,
-            "./uz": 459,
-            "./uz.js": 459,
-            "./vi": 460,
-            "./vi.js": 460,
-            "./x-pseudo": 461,
-            "./x-pseudo.js": 461,
-            "./zh-cn": 462,
-            "./zh-cn.js": 462,
-            "./zh-tw": 463,
-            "./zh-tw.js": 463
+            "./af": 369,
+            "./af.js": 369,
+            "./ar": 373,
+            "./ar-ma": 370,
+            "./ar-ma.js": 370,
+            "./ar-sa": 371,
+            "./ar-sa.js": 371,
+            "./ar-tn": 372,
+            "./ar-tn.js": 372,
+            "./ar.js": 373,
+            "./az": 374,
+            "./az.js": 374,
+            "./be": 375,
+            "./be.js": 375,
+            "./bg": 376,
+            "./bg.js": 376,
+            "./bn": 377,
+            "./bn.js": 377,
+            "./bo": 378,
+            "./bo.js": 378,
+            "./br": 379,
+            "./br.js": 379,
+            "./bs": 380,
+            "./bs.js": 380,
+            "./ca": 381,
+            "./ca.js": 381,
+            "./cs": 382,
+            "./cs.js": 382,
+            "./cv": 383,
+            "./cv.js": 383,
+            "./cy": 384,
+            "./cy.js": 384,
+            "./da": 385,
+            "./da.js": 385,
+            "./de": 387,
+            "./de-at": 386,
+            "./de-at.js": 386,
+            "./de.js": 387,
+            "./dv": 388,
+            "./dv.js": 388,
+            "./el": 389,
+            "./el.js": 389,
+            "./en-au": 390,
+            "./en-au.js": 390,
+            "./en-ca": 391,
+            "./en-ca.js": 391,
+            "./en-gb": 392,
+            "./en-gb.js": 392,
+            "./en-ie": 393,
+            "./en-ie.js": 393,
+            "./en-nz": 394,
+            "./en-nz.js": 394,
+            "./eo": 395,
+            "./eo.js": 395,
+            "./es": 396,
+            "./es.js": 396,
+            "./et": 397,
+            "./et.js": 397,
+            "./eu": 398,
+            "./eu.js": 398,
+            "./fa": 399,
+            "./fa.js": 399,
+            "./fi": 400,
+            "./fi.js": 400,
+            "./fo": 401,
+            "./fo.js": 401,
+            "./fr": 404,
+            "./fr-ca": 402,
+            "./fr-ca.js": 402,
+            "./fr-ch": 403,
+            "./fr-ch.js": 403,
+            "./fr.js": 404,
+            "./fy": 405,
+            "./fy.js": 405,
+            "./gd": 406,
+            "./gd.js": 406,
+            "./gl": 407,
+            "./gl.js": 407,
+            "./he": 408,
+            "./he.js": 408,
+            "./hi": 409,
+            "./hi.js": 409,
+            "./hr": 410,
+            "./hr.js": 410,
+            "./hu": 411,
+            "./hu.js": 411,
+            "./hy-am": 412,
+            "./hy-am.js": 412,
+            "./id": 413,
+            "./id.js": 413,
+            "./is": 414,
+            "./is.js": 414,
+            "./it": 415,
+            "./it.js": 415,
+            "./ja": 416,
+            "./ja.js": 416,
+            "./jv": 417,
+            "./jv.js": 417,
+            "./ka": 418,
+            "./ka.js": 418,
+            "./kk": 419,
+            "./kk.js": 419,
+            "./km": 420,
+            "./km.js": 420,
+            "./ko": 421,
+            "./ko.js": 421,
+            "./ky": 422,
+            "./ky.js": 422,
+            "./lb": 423,
+            "./lb.js": 423,
+            "./lo": 424,
+            "./lo.js": 424,
+            "./lt": 425,
+            "./lt.js": 425,
+            "./lv": 426,
+            "./lv.js": 426,
+            "./me": 427,
+            "./me.js": 427,
+            "./mk": 428,
+            "./mk.js": 428,
+            "./ml": 429,
+            "./ml.js": 429,
+            "./mr": 430,
+            "./mr.js": 430,
+            "./ms": 432,
+            "./ms-my": 431,
+            "./ms-my.js": 431,
+            "./ms.js": 432,
+            "./my": 433,
+            "./my.js": 433,
+            "./nb": 434,
+            "./nb.js": 434,
+            "./ne": 435,
+            "./ne.js": 435,
+            "./nl": 436,
+            "./nl.js": 436,
+            "./nn": 437,
+            "./nn.js": 437,
+            "./pa-in": 438,
+            "./pa-in.js": 438,
+            "./pl": 439,
+            "./pl.js": 439,
+            "./pt": 441,
+            "./pt-br": 440,
+            "./pt-br.js": 440,
+            "./pt.js": 441,
+            "./ro": 442,
+            "./ro.js": 442,
+            "./ru": 443,
+            "./ru.js": 443,
+            "./se": 444,
+            "./se.js": 444,
+            "./si": 445,
+            "./si.js": 445,
+            "./sk": 446,
+            "./sk.js": 446,
+            "./sl": 447,
+            "./sl.js": 447,
+            "./sq": 448,
+            "./sq.js": 448,
+            "./sr": 450,
+            "./sr-cyrl": 449,
+            "./sr-cyrl.js": 449,
+            "./sr.js": 450,
+            "./ss": 451,
+            "./ss.js": 451,
+            "./sv": 452,
+            "./sv.js": 452,
+            "./sw": 453,
+            "./sw.js": 453,
+            "./ta": 454,
+            "./ta.js": 454,
+            "./te": 455,
+            "./te.js": 455,
+            "./th": 456,
+            "./th.js": 456,
+            "./tl-ph": 457,
+            "./tl-ph.js": 457,
+            "./tlh": 458,
+            "./tlh.js": 458,
+            "./tr": 459,
+            "./tr.js": 459,
+            "./tzl": 460,
+            "./tzl.js": 460,
+            "./tzm": 462,
+            "./tzm-latn": 461,
+            "./tzm-latn.js": 461,
+            "./tzm.js": 462,
+            "./uk": 463,
+            "./uk.js": 463,
+            "./uz": 464,
+            "./uz.js": 464,
+            "./vi": 465,
+            "./vi.js": 465,
+            "./x-pseudo": 466,
+            "./x-pseudo.js": 466,
+            "./zh-cn": 467,
+            "./zh-cn.js": 467,
+            "./zh-tw": 468,
+            "./zh-tw.js": 468
         };
 
         function webpackContext(req) {
@@ -17095,71 +17438,165 @@ webpackJsonp([2], [
         };
         webpackContext.resolve = webpackContextResolve;
         module.exports = webpackContext;
-        webpackContext.id = 485;
+        webpackContext.id = 505;
 
 
         /***/
     },
-    /* 486 */
+    /* 506 */
     /***/ function (module, exports) {
 
-        module.exports = ""
+        module.exports = "<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>div</span> <span class=\"token attr-name\" >layout-gt-sm</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>row<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>md-input</span> <span class=\"token attr-name\" >placeholder</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>filter by index<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>col<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[column]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span><span class=\"token punctuation\" >'</span>index<span class=\"token punctuation\" >'</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[ng2TableViewFilter]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.filtering<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >(tableChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>md-input</span><span class=\"token punctuation\" >></span></span>\r\n\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>md-input</span> <span class=\"token attr-name\" >placeholder</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>filter by name<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>col<span class=\"token punctuation\" >\"</span></span><span class=\"token style-attr language-css\" ><span class=\"token attr-name\" >\r\n              <span class=\"token attr-name\" >style</span></span><span class=\"token punctuation\" >=\"</span><span class=\"token attr-value\" ><span class=\"token property\" >margin-left</span><span class=\"token punctuation\" >:</span> 2em</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[column]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span><span class=\"token punctuation\" >'</span>name<span class=\"token punctuation\" >'</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[ng2TableViewFilter]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.filtering<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >(tableChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>md-input</span><span class=\"token punctuation\" >></span></span>\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>div</span><span class=\"token punctuation\" >></span></span>\r\n\r\n\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>ng2TableView</span> <span class=\"token attr-name\" >[config]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >(tableChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[rows]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.rows<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[columns]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.columns<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>ng2TableView</span><span class=\"token punctuation\" >></span></span>\r\n\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>div</span> <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>text-center<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>ngTableViewPaging</span> <span class=\"token attr-name\" >[config]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder<span class=\"token punctuation\" >\"</span></span> <span class=\"token attr-name\" >(pageChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span><span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>ngTableViewPaging</span><span class=\"token punctuation\" >></span></span>\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>div</span><span class=\"token punctuation\" >></span></span>"
 
         /***/
     },
-    /* 487 */
+    /* 507 */
     /***/ function (module, exports) {
 
-        module.exports = "<div class=\"page\">\r\n  <header>\r\n\r\n  </header>\r\n\r\n  <main>\r\n    <router-outlet>\r\n\r\n    </router-outlet>\r\n  </main>\r\n\r\n\r\n  <footer>\r\n\r\n  </footer>\r\n\r\n</div>\r\n"
+        module.exports = "<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>md-input</span> <span class=\"token attr-name\" >placeholder</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>name<span class=\"token punctuation\" >\"</span></span> <span class=\"token attr-name\" >[(ngModel)]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>cellData.name<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span><span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>md-input</span><span class=\"token punctuation\" >></span></span>"
 
         /***/
     },
-    /* 488 */
+    /* 508 */
     /***/ function (module, exports) {
 
-        module.exports = "<md-input placeholder=\"name\" [(ngModel)]=\"cellData.name\"></md-input>"
+        module.exports = "<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>div</span> <span class=\"token attr-name\" >layout-gt-sm</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>row<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>md-input</span> <span class=\"token attr-name\" >placeholder</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>filter by index<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>col<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[column]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span><span class=\"token punctuation\" >'</span>index<span class=\"token punctuation\" >'</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[ng2TableViewFilter]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.filtering<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >(tableChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>md-input</span><span class=\"token punctuation\" >></span></span>\r\n\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>md-input</span> <span class=\"token attr-name\" >placeholder</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>filter by name<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>col<span class=\"token punctuation\" >\"</span></span><span class=\"token style-attr language-css\" ><span class=\"token attr-name\" >\r\n              <span class=\"token attr-name\" >style</span></span><span class=\"token punctuation\" >=\"</span><span class=\"token attr-value\" ><span class=\"token property\" >margin-left</span><span class=\"token punctuation\" >:</span> 2em</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[column]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span><span class=\"token punctuation\" >'</span>name<span class=\"token punctuation\" >'</span><span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >[ng2TableViewFilter]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder.filtering<span class=\"token punctuation\" >\"</span></span>\r\n              <span class=\"token attr-name\" >(tableChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>md-input</span><span class=\"token punctuation\" >></span></span>\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>div</span><span class=\"token punctuation\" >></span></span>"
 
         /***/
     },
-    /* 489 */
+    /* 509 */
+    508,
+    /* 510 */
     /***/ function (module, exports) {
 
-        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n\r\n        <div layout-gt-sm=\"row\">\r\n            <md-input placeholder=\"filter by index\"\r\n                      class=\"col\"\r\n                      [column]=\"'index'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n\r\n            <md-input placeholder=\"filter by name\"\r\n                      class=\"col\"\r\n                      style=\"margin-left: 2em\"\r\n                      [column]=\"'name'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n        </div>\r\n\r\n\r\n\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n    </md-content>\r\n\r\n\r\n</div>\r\n\r\n\r\n"
+        module.exports = "<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>div</span> <span class=\"token attr-name\" >class</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>text-center<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span>\r\n    <span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;</span>ngTableViewPaging</span> <span class=\"token attr-name\" >[config]</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>tableBuilder<span class=\"token punctuation\" >\"</span></span> <span class=\"token attr-name\" >(pageChanged)</span><span class=\"token attr-value\" ><span class=\"token punctuation\" >=</span><span class=\"token punctuation\" >\"</span>onChangeTable($event)<span class=\"token punctuation\" >\"</span></span><span class=\"token punctuation\" >></span></span><span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>ngTableViewPaging</span><span class=\"token punctuation\" >></span></span>\r\n<span class=\"token tag\" ><span class=\"token tag\" ><span class=\"token punctuation\" >&lt;/</span>div</span><span class=\"token punctuation\" >></span></span>"
 
         /***/
     },
-    /* 490 */
+    /* 511 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>ColumnIfc<span class=\"token punctuation\" >,</span> TableColumns<span class=\"token punctuation\" >,</span> TableColumn<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n\r\n\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >const</span> PageTableColumns<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span>ColumnIfc<span class=\"token operator\" >></span> <span class=\"token operator\" >=</span> <span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumns</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setSort</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"Editable name \"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"name\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTemplate</span><span class=\"token punctuation\" >(</span><span class=\"token function\" >require</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"./custom-template.html\"</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setSort</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"latitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.latitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"longitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.longitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >getCols</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n"
+
+        /***/
+    },
+    /* 512 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>Component<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >'@angular/core'</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>CanActivate<span class=\"token punctuation\" >,</span> OnActivate<span class=\"token punctuation\" >,</span> ComponentInstruction<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"@angular/router-deprecated\"</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>NG_TABLE_VIEW_DIRECTIVES<span class=\"token punctuation\" >,</span> TableView<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>PageTableColumns<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"../cols/columns\"</span><span class=\"token punctuation\" >;</span>\r\n@<span class=\"token function\" >Component</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >{</span>\r\n    selector<span class=\"token punctuation\" >:</span> <span class=\"token string\" >\"customTable\"</span><span class=\"token punctuation\" >,</span>\r\n    directives<span class=\"token punctuation\" >:</span> <span class=\"token punctuation\" >[</span>NG_TABLE_VIEW_DIRECTIVES<span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >,</span>\r\n    template<span class=\"token punctuation\" >:</span> <span class=\"token function\" >require</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >'./template.html'</span><span class=\"token punctuation\" >)</span>\r\n<span class=\"token punctuation\" >}</span><span class=\"token punctuation\" >)</span>\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >class</span> <span class=\"token class-name\" >CustomTable</span> <span class=\"token keyword\" >extends</span> <span class=\"token class-name\" >TableView</span> <span class=\"token keyword\" >implements</span> <span class=\"token class-name\" >OnActivate</span> <span class=\"token punctuation\" >{</span>\r\n    <span class=\"token keyword\" >private</span> users<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >></span><span class=\"token punctuation\" >;</span>\r\n\r\n    <span class=\"token keyword\" >constructor</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >super</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >[</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n\r\n    <span class=\"token function\" >routerOnActivate</span><span class=\"token punctuation\" >(</span>next<span class=\"token punctuation\" >:</span>ComponentInstruction<span class=\"token punctuation\" >,</span> prev<span class=\"token punctuation\" >:</span>ComponentInstruction<span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >:</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >|</span>Promise<span class=\"token operator\" >&lt;</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >></span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span>users <span class=\"token operator\" >=</span> next<span class=\"token punctuation\" >.</span>routeData<span class=\"token punctuation\" >.</span>data<span class=\"token punctuation\" >[</span><span class=\"token string\" >'users'</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >;</span>\r\n        <span class=\"token keyword\" >return</span> Promise<span class=\"token punctuation\" >.</span><span class=\"token function\" >resolve</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n\r\n    <span class=\"token function\" >ngOnInit</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span><span class=\"token function\" >getBuilder</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setData</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span>users<span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCols</span><span class=\"token punctuation\" >(</span>PageTableColumns<span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setPaging</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setItemsPerPage</span><span class=\"token punctuation\" >(</span><span class=\"token number\" >5</span><span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setSelectable</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span><span class=\"token function\" >buildTable</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n<span class=\"token punctuation\" >}</span>"
+
+        /***/
+    },
+    /* 513 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>ColumnIfc<span class=\"token punctuation\" >,</span> TableColumns<span class=\"token punctuation\" >,</span> TableColumn<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n\r\n\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >const</span> PageTableColumns<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span>ColumnIfc<span class=\"token operator\" >></span> <span class=\"token operator\" >=</span> <span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumns</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"Editable name \"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"name\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTemplate</span><span class=\"token punctuation\" >(</span><span class=\"token function\" >require</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"./custom-template.html\"</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"latitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.latitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"longitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.longitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >getCols</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n"
+
+        /***/
+    },
+    /* 514 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>Component<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >'@angular/core'</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>CanActivate<span class=\"token punctuation\" >,</span> OnActivate<span class=\"token punctuation\" >,</span> ComponentInstruction<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"@angular/router-deprecated\"</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>PageTableColumns<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"../cols/columns\"</span><span class=\"token punctuation\" >;</span>\r\n<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>NG_TABLE_VIEW_DIRECTIVES<span class=\"token punctuation\" >,</span> TableView<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n\r\n@<span class=\"token function\" >Component</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >{</span>\r\n    selector<span class=\"token punctuation\" >:</span> <span class=\"token string\" >\"table-comp\"</span><span class=\"token punctuation\" >,</span>\r\n    directives<span class=\"token punctuation\" >:</span> <span class=\"token punctuation\" >[</span>NG_TABLE_VIEW_DIRECTIVES<span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >,</span>\r\n    providers<span class=\"token punctuation\" >:</span> <span class=\"token punctuation\" >[</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >,</span>\r\n    pipes<span class=\"token punctuation\" >:</span> <span class=\"token punctuation\" >[</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >,</span>\r\n    template<span class=\"token punctuation\" >:</span> <span class=\"token function\" >require</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >'./regular-table.html'</span><span class=\"token punctuation\" >)</span>\r\n<span class=\"token punctuation\" >}</span><span class=\"token punctuation\" >)</span>\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >class</span> <span class=\"token class-name\" >RegularTable</span> <span class=\"token keyword\" >extends</span> <span class=\"token class-name\" >TableView</span> <span class=\"token punctuation\" >{</span>\r\n\r\n    <span class=\"token keyword\" >private</span> users<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >></span><span class=\"token punctuation\" >;</span>\r\n\r\n    <span class=\"token keyword\" >constructor</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >super</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >[</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n\r\n    <span class=\"token function\" >routerOnActivate</span><span class=\"token punctuation\" >(</span>next<span class=\"token punctuation\" >:</span>ComponentInstruction<span class=\"token punctuation\" >,</span> prev<span class=\"token punctuation\" >:</span>ComponentInstruction<span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >:</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >|</span>Promise<span class=\"token operator\" >&lt;</span><span class=\"token keyword\" >any</span><span class=\"token operator\" >></span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span>users <span class=\"token operator\" >=</span> next<span class=\"token punctuation\" >.</span>routeData<span class=\"token punctuation\" >.</span>data<span class=\"token punctuation\" >[</span><span class=\"token string\" >'users'</span><span class=\"token punctuation\" >]</span><span class=\"token punctuation\" >;</span>\r\n        <span class=\"token keyword\" >return</span> Promise<span class=\"token punctuation\" >.</span><span class=\"token function\" >resolve</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n\r\n    <span class=\"token function\" >ngOnInit</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span> <span class=\"token punctuation\" >{</span>\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span><span class=\"token function\" >getBuilder</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setData</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span>users<span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCols</span><span class=\"token punctuation\" >(</span>PageTableColumns<span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setPaging</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n            <span class=\"token punctuation\" >.</span><span class=\"token function\" >setItemsPerPage</span><span class=\"token punctuation\" >(</span><span class=\"token number\" >5</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n\r\n        <span class=\"token keyword\" >this</span><span class=\"token punctuation\" >.</span><span class=\"token function\" >buildTable</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n    <span class=\"token punctuation\" >}</span>\r\n<span class=\"token punctuation\" >}</span>\r\n"
+
+        /***/
+    },
+    /* 515 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>ColumnIfc<span class=\"token punctuation\" >,</span> TableColumns<span class=\"token punctuation\" >,</span> TableColumn<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n\r\n\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >const</span> PageTableColumns<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span>ColumnIfc<span class=\"token operator\" >></span> <span class=\"token operator\" >=</span> <span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumns</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setSort</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"Editable name \"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"name\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setSort</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >true</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"latitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.latitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"longitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.longitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >getCols</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n"
+
+        /***/
+    },
+    /* 516 */
+    514,
+    /* 517 */
+    /***/ function (module, exports) {
+
+        module.exports = "<span class=\"token keyword\" >import</span> <span class=\"token punctuation\" >{</span>ColumnIfc<span class=\"token punctuation\" >,</span> TableColumns<span class=\"token punctuation\" >,</span> TableColumn<span class=\"token punctuation\" >}</span> from <span class=\"token string\" >\"NG2TableView\"</span><span class=\"token punctuation\" >;</span>\r\n\r\n\r\n<span class=\"token keyword\" >export</span> <span class=\"token keyword\" >const</span> PageTableColumns<span class=\"token punctuation\" >:</span><span class=\"token keyword\" >Array</span><span class=\"token operator\" >&lt;</span>ColumnIfc<span class=\"token operator\" >></span> <span class=\"token operator\" >=</span> <span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumns</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"index\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"Editable name \"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"name\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"gender\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"company\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"email\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"latitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.latitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >addCol</span><span class=\"token punctuation\" >(</span><span class=\"token keyword\" >new</span> <span class=\"token class-name\" >TableColumn</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setTitle</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"longitude\"</span><span class=\"token punctuation\" >)</span>\r\n        <span class=\"token punctuation\" >.</span><span class=\"token function\" >setName</span><span class=\"token punctuation\" >(</span><span class=\"token string\" >\"location.longitude\"</span><span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >)</span>\r\n    <span class=\"token punctuation\" >.</span><span class=\"token function\" >getCols</span><span class=\"token punctuation\" >(</span><span class=\"token punctuation\" >)</span><span class=\"token punctuation\" >;</span>\r\n"
+
+        /***/
+    },
+    /* 518 */
+    514,
+    /* 519 */
     /***/ function (module, exports) {
 
         module.exports = "<div class=\"md-table-pagination\">\r\n\r\n  <div class=\"page-select\">\r\n    <label>\r\n      <span class=\"label\">Page:</span>\r\n      <select [(ngModel)]=\"config.page\" (ngModelChange)=\"onPageSelect()\">\r\n        <option *ngFor=\"let page of totalPagesArr; let i = index\" [ngValue]=\"toNumber(i+1)\">{{i+1}}</option>\r\n      </select>\r\n    </label>\r\n  </div>\r\n\r\n  <div class=\"limit-select\">\r\n    <label>\r\n      <span class=\"label\">Rows per page:</span>\r\n      <select [(ngModel)]=\"config.itemsPerPage\" (ngModelChange)=\"itemsPerPageSelect()\">\r\n        <option *ngFor=\"let i of [5, 10, 20, 50]\" [ngValue]=\"toNumber(i)\">{{i}}</option>\r\n      </select>\r\n    </label>\r\n  </div>\r\n\r\n  <div class=\"buttons\">\r\n    <button md-button class=\"md-icon-button\"\r\n            type=\"button\"\r\n            (click)=\"selectPage(1, $event)\"\r\n            [disabled]=\"noPrevious()\"\r\n            aria-label=\"First\">\r\n      <i md-icon class=\"material-icons\">skip_previous</i>\r\n    </button>\r\n\r\n    <button md-button class=\"md-icon-button\"\r\n            type=\"button\"\r\n            (click)=\"selectPage(config.page - 1, $event)\"\r\n            [disabled]=\"noPrevious()\"\r\n            aria-label=\"Previous\">\r\n      <i md-icon class=\"material-icons\">keyboard_arrow_left</i>\r\n    </button>\r\n\r\n    <button md-button class=\"md-icon-button\"\r\n            type=\"button\"\r\n            (click)=\"selectPage(config.page + 1, $event)\"\r\n            [disabled]=\"noNext()\"\r\n            aria-label=\"Next\">\r\n      <i md-icon class=\"material-icons\">keyboard_arrow_right</i>\r\n    </button>\r\n\r\n\r\n    <button md-button class=\"md-icon-button\"\r\n            type=\"button\"\r\n            (click)=\"selectPage(totalPages, $event)\"\r\n            [disabled]=\"noNext()\"\r\n            aria-label=\"Last\">\r\n      <i md-icon class=\"material-icons\">skip_next</i>\r\n    </button>\r\n  </div>\r\n\r\n</div>\r\n"
 
         /***/
     },
-    /* 491 */
+    /* 520 */
     /***/ function (module, exports) {
 
         module.exports = ".md-table-pagination {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  -webkit-justify-content: center;\r\n  -ms-flex-pack: end;\r\n  justify-content: center;\r\n  -webkit-flex-wrap: wrap-reverse;\r\n  -ms-flex-wrap: wrap-reverse;\r\n  flex-wrap: wrap-reverse;\r\n  box-sizing: border-box;\r\n  padding: 0 24px;\r\n  font-size: 12px;\r\n  color: rgba(0, 0, 0, 0.54);\r\n  border-top: 1px rgba(0, 0, 0, 0.12) solid;\r\n}\r\n\r\n.md-table-pagination md-select {\r\n  -webkit-justify-content: flex-end;\r\n  -ms-flex-pack: end;\r\n  justify-content: flex-end;\r\n  min-width: 64px;\r\n}\r\n\r\n.md-table-pagination md-select:not([disabled]):focus .md-select-value {\r\n  color: rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value {\r\n  -webkit-flex: 0 0 auto;\r\n  -ms-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value span.md-select-icon {\r\n  -webkit-justify-content: center;\r\n  -ms-flex-pack: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  margin-right: -6px !important;\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value span.md-select-icon:after {\r\n  top: initial;\r\n  -webkit-transform: scaleY(0.5) scaleX(1);\r\n  transform: scaleY(0.5) scaleX(1);\r\n}\r\n\r\n.md-table-pagination > * {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  height: 56px;\r\n}\r\n\r\n.md-table-pagination > .buttons:not(:first-child),\r\n.md-table-pagination > .limit-select:not(:first-child) {\r\n  margin-left: 32px;\r\n}\r\n\r\n.md-table-pagination > .buttons {\r\n  margin-right: -16px;\r\n}\r\n\r\n.md-table-pagination > .buttons > .md-button.md-icon-button {\r\n  margin: 0;\r\n}\r\n\r\n.md-table-pagination > .buttons > .label + .md-button.md-icon-button {\r\n  margin-left: 20px;\r\n}\r\n"
 
         /***/
     },
-    /* 492 */
+    /* 521 */
     /***/ function (module, exports) {
 
         module.exports = "md-backdrop.md-edit-dialog-backdrop {\r\n  z-index: 80\r\n}\r\n\r\nmd-edit-dialog {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-flex-direction: column;\r\n  -ms-flex-direction: column;\r\n  flex-direction: column;\r\n  position: fixed;\r\n  z-index: 81;\r\n  background-color: #f9f9f9;\r\n  border-radius: 2px;\r\n  cursor: default\r\n}\r\n\r\nmd-edit-dialog > .md-content {\r\n  padding: 16px 24px 0\r\n}\r\n\r\nmd-edit-dialog > .md-content .md-title {\r\n  color: rgba(0, 0, 0, .87);\r\n  margin-bottom: 8px\r\n}\r\n\r\nmd-edit-dialog > .md-content md-input-container {\r\n  margin: 0;\r\n  font-size: 13px\r\n}\r\n\r\nmd-edit-dialog > .md-content md-input-container input {\r\n  float: none\r\n}\r\n\r\nmd-edit-dialog > .md-content md-input-container .md-errors-spacer {\r\n  min-height: auto;\r\n  min-width: auto;\r\n  color: rgba(0, 0, 0, .54)\r\n}\r\n\r\nmd-edit-dialog > .md-content md-input-container .md-errors-spacer .md-char-counter {\r\n  padding: 5px 2px 5px 0\r\n}\r\n\r\nmd-edit-dialog > .md-content md-input-container [ng-message] {\r\n  padding: 5px 0 5px 2px\r\n}\r\n\r\nmd-edit-dialog > .md-actions {\r\n  margin: 0 16px 8px\r\n}\r\n\r\nmd-edit-dialog > .md-actions .md-button {\r\n  margin: 0;\r\n  min-width: initial\r\n}\r\n\r\nmd-edit-dialog > .md-actions .md-button + .md-button {\r\n  margin-left: 8px\r\n}\r\n\r\n.md-table-pagination {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  -webkit-justify-content: flex-end;\r\n  -ms-flex-pack: end;\r\n  justify-content: flex-end;\r\n  -webkit-flex-wrap: wrap-reverse;\r\n  -ms-flex-wrap: wrap-reverse;\r\n  flex-wrap: wrap-reverse;\r\n  box-sizing: border-box;\r\n  padding: 0 24px;\r\n  font-size: 12px;\r\n  color: rgba(0, 0, 0, .54);\r\n  border-top: 1px rgba(0, 0, 0, .12) solid\r\n}\r\n\r\n.md-table-pagination md-select {\r\n  -webkit-justify-content: flex-end;\r\n  -ms-flex-pack: end;\r\n  justify-content: flex-end;\r\n  min-width: 64px\r\n}\r\n\r\n.md-table-pagination md-select:not([disabled]):focus .md-select-value {\r\n  color: rgba(0, 0, 0, .54)\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value {\r\n  -webkit-flex: 0 0 auto;\r\n  -ms-flex: 0 0 auto;\r\n  flex: 0 0 auto\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value span.md-select-icon {\r\n  -webkit-justify-content: center;\r\n  -ms-flex-pack: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  margin-right: -6px !important\r\n}\r\n\r\n.md-table-pagination md-select .md-select-value span.md-select-icon:after {\r\n  top: initial;\r\n  -webkit-transform: scaleY(0.5) scaleX(1);\r\n  transform: scaleY(0.5) scaleX(1)\r\n}\r\n\r\n.md-table-pagination > * {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  height: 56px\r\n}\r\n\r\n.md-table-pagination > .buttons:not(:first-child), .md-table-pagination > .limit-select:not(:first-child) {\r\n  margin-left: 32px\r\n}\r\n\r\n.md-table-pagination > .buttons {\r\n  margin-right: -16px\r\n}\r\n\r\n.md-table-pagination > .buttons > .md-button.md-icon-button {\r\n  margin: 0\r\n}\r\n\r\n.md-table-pagination > .buttons > .label + .md-button.md-icon-button {\r\n  margin-left: 20px\r\n}\r\n\r\nmd-select.md-table-select {\r\n  margin: 0\r\n}\r\n\r\nmd-select.md-table-select > .md-select-value {\r\n  padding: 0;\r\n  min-width: 0;\r\n  min-height: 24px;\r\n  border-bottom: 0 !important\r\n}\r\n\r\nmd-select.md-table-select > .md-select-value > span {\r\n  display: block;\r\n  height: auto;\r\n  -webkit-transform: none !important;\r\n  transform: none !important\r\n}\r\n\r\nmd-select.md-table-select > .md-select-value > span > .md-text {\r\n  display: inherit;\r\n  height: inherit;\r\n  -webkit-transform: inherit;\r\n  transform: inherit\r\n}\r\n\r\nmd-select.md-table-select > .md-select-value > span.md-select-icon {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  height: 24px;\r\n  margin: 0\r\n}\r\n\r\nmd-select.md-table-select > .md-select-value > span.md-select-icon:after {\r\n  top: initial\r\n}\r\n\r\n.md-select-menu-container.md-pagination-select, .md-select-menu-container.md-table-select {\r\n  margin-left: -2px;\r\n  border-radius: 2px\r\n}\r\n\r\n.md-select-menu-container.md-pagination-select md-content, .md-select-menu-container.md-pagination-select md-select-menu, .md-select-menu-container.md-table-select md-content, .md-select-menu-container.md-table-select md-select-menu {\r\n  border-radius: inherit\r\n}\r\n\r\n.md-select-menu-container.md-pagination-select md-content, .md-select-menu-container.md-table-select md-content {\r\n  padding: 0\r\n}\r\n\r\n.md-select-menu-container.md-table-select .md-text {\r\n  font-size: 13px\r\n}\r\n\r\n.md-select-menu-container.md-pagination-select .md-text {\r\n  font-size: 12px\r\n}\r\n\r\nmd-toolbar.md-table-toolbar {\r\n  box-shadow: none\r\n}\r\n\r\nmd-toolbar.md-table-toolbar.md-default-theme:not(.md-menu-toolbar).md-default, md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default {\r\n  background-color: #fff;\r\n  color: rgba(0, 0, 0, .87)\r\n}\r\n\r\nmd-toolbar.md-table-toolbar.md-default-theme:not(.md-menu-toolbar).md-default .md-button, md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default .md-button {\r\n  color: rgba(0, 0, 0, .87)\r\n}\r\n\r\n@media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {\r\n  md-toolbar.md-table-toolbar .md-toolbar-tools {\r\n    height: 64px;\r\n    max-height: initial\r\n  }\r\n}\r\n\r\nmd-toolbar.md-table-toolbar .md-toolbar-tools {\r\n  padding: 0 24px\r\n}\r\n\r\nmd-toolbar.md-table-toolbar .md-toolbar-tools md-icon {\r\n  color: rgba(0, 0, 0, .54)\r\n}\r\n\r\nmd-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button {\r\n  margin: 0\r\n}\r\n\r\nmd-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:first-child {\r\n  margin-left: -12px\r\n}\r\n\r\nmd-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:last-child {\r\n  margin-right: -12px\r\n}\r\n\r\nmd-card > md-table-container:first-child, md-card > md-toolbar.md-table-toolbar:first-child {\r\n  border-top-left-radius: 2px;\r\n  border-top-right-radius: 2px\r\n}\r\n\r\nmd-card > md-table-container:last-child, md-card > md-toolbar.md-table-toolbar:last-child {\r\n  border-bottom-left-radius: 2px;\r\n  border-bottom-right-radius: 2px\r\n}\r\n\r\nmd-table-container {\r\n  display: block;\r\n  max-width: 100%;\r\n  overflow-x: auto;\r\n  -webkit-overflow-scrolling: touch\r\n}\r\n\r\ntable.md-table {\r\n  width: 100%;\r\n  border-spacing: 0;\r\n  overflow: hidden\r\n}\r\n\r\ntable.md-table thead.md-head > tr.md-row {\r\n  height: 56px\r\n}\r\n\r\ntable.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {\r\n  height: 48px\r\n}\r\n\r\ntable.md-table thead.md-head + .md-table-progress md-progress-linear {\r\n  top: -3px\r\n}\r\n\r\ntable.md-table .md-table-progress th {\r\n  padding: 0\r\n}\r\n\r\ntable.md-table .md-table-progress th md-progress-linear {\r\n  height: 0;\r\n  transition: opacity 1s\r\n}\r\n\r\ntable.md-table .md-table-progress th md-progress-linear.ng-hide {\r\n  opacity: 0\r\n}\r\n\r\ntable.md-table .md-table-progress th md-progress-linear > .md-container {\r\n  height: 3px;\r\n  top: 0;\r\n  transition: none\r\n}\r\n\r\ntable.md-table .md-table-progress th md-progress-linear > .md-container > .md-bar {\r\n  height: 3px\r\n}\r\n\r\ntable.md-table th.md-column {\r\n  color: rgba(0, 0, 0, .54);\r\n  font-size: 12px;\r\n  font-weight: 700;\r\n  white-space: nowrap\r\n}\r\n\r\ntable.md-table th.md-column.md-sort a {\r\n  cursor: pointer\r\n}\r\n\r\ntable.md-table th.md-column md-icon {\r\n  height: 16px;\r\n  width: 16px;\r\n  font-size: 16px !important;\r\n  line-height: 16px !important\r\n}\r\n\r\ntable.md-table th.md-column md-icon.md-sort-icon {\r\n  color: rgba(0, 0, 0, .26);\r\n  opacity: 0;\r\n  transition: -webkit-transform .25s, opacity .25s;\r\n  transition: transform .25s, opacity .25s\r\n}\r\n\r\ntable.md-table th.md-column md-icon.md-sort-icon.md-asc {\r\n  -webkit-transform: rotate(0deg);\r\n  transform: rotate(0deg)\r\n}\r\n\r\ntable.md-table th.md-column md-icon.md-sort-icon.md-desc {\r\n  -webkit-transform: rotate(180deg);\r\n  transform: rotate(180deg)\r\n}\r\n\r\ntable.md-table th.md-column md-icon:not(:first-child) {\r\n  margin-left: 8px\r\n}\r\n\r\ntable.md-table th.md-column md-icon:not(:last-child) {\r\n  margin-right: 8px\r\n}\r\n\r\ntable.md-table th.md-column a.md-active,\r\ntable.md-table th.md-column a.md-active md-icon {\r\n  color: rgba(0, 0, 0, .87)\r\n}\r\n\r\ntable.md-table th.md-column a.md-active md-icon.md-sort-icon,\r\ntable.md-table th.md-column:hover md-icon.md-sort-icon {\r\n  opacity: 1\r\n}\r\n\r\ntable.md-table tr.md-row[data-ng-repeat].ng-leave, table.md-table tr.md-row[ng-repeat].ng-leave, table.md-table tr.md-row[ng\\:repeat].ng-leave, table.md-table tr.md-row[x-ng-repeat].ng-leave {\r\n  display: none\r\n}\r\n\r\ntable.md-table.md-row-select tbody.md-body > tr.md-row {\r\n  transition: background-color .2s\r\n}\r\n\r\ntable.md-table.md-row-select tbody.md-body > tr.md-row:not([disabled]):hover {\r\n  background-color: #eee !important\r\n}\r\n\r\ntable.md-table.md-row-select tbody.md-body > tr.md-row.md-selected {\r\n  background-color: #f5f5f5\r\n}\r\n\r\ntable.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-select th.md-column:first-child {\r\n  width: 20px;\r\n  padding: 0 0 0 24px\r\n}\r\n\r\ntable.md-table.md-row-select td.md-cell:nth-child(2), table.md-table.md-row-select th.md-column:nth-child(2) {\r\n  padding: 0 24px\r\n}\r\n\r\ntable.md-table.md-row-select td.md-cell:nth-child(n+3):nth-last-child(n+2), table.md-table.md-row-select th.md-column:nth-child(n+3):nth-last-child(n+2) {\r\n  padding: 0 56px 0 0;\r\n}\r\n\r\ntable.md-table:not(.md-row-select) td.md-cell:first-child, table.md-table:not(.md-row-select) th.md-column:first-child {\r\n  padding: 0 24px\r\n}\r\n\r\ntable.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2), table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {\r\n  padding: 0 56px 0 0\r\n}\r\n\r\ntable.md-table td.md-cell, table.md-table th.md-column {\r\n  vertical-align: middle;\r\n  text-align: left\r\n}\r\n\r\ntable.md-table td.md-cell .md-cell-data {\r\n  max-height: 50px;\r\n  max-width: 300px;\r\n  overflow: hidden;\r\n  display: inline-block;\r\n}\r\n\r\ntable.md-table td.md-cell > *, table.md-table th.md-column > * {\r\n  vertical-align: middle\r\n}\r\n\r\ntable.md-table td.md-cell:last-child, table.md-table th.md-column:last-child {\r\n  padding: 0 24px 0 0\r\n}\r\n\r\ntable.md-table td.md-cell.md-clickable:focus, table.md-table th.md-column.md-clickable:focus {\r\n  outline: 0\r\n}\r\n\r\ntable.md-table td.md-cell.md-numeric, table.md-table th.md-column.md-numeric {\r\n  text-align: right\r\n}\r\n\r\ntable.md-table td.md-cell {\r\n  color: rgba(0, 0, 0, .87);\r\n  font-size: 13px;\r\n  border-top: 1px grey solid;\r\n  height: 55px;\r\n\r\n}\r\n\r\ntable.md-table td.md-cell.md-numeric md-select {\r\n  -webkit-justify-content: flex-end;\r\n  -ms-flex-pack: end;\r\n  justify-content: flex-end\r\n}\r\n\r\ntable.md-table td.md-cell.md-numeric md-select .md-select-value {\r\n  -webkit-flex: 0 0 auto;\r\n  -ms-flex: 0 0 auto;\r\n  flex: 0 0 auto\r\n}\r\n\r\ntable.md-table td.md-cell.md-placeholder {\r\n  color: rgba(0, 0, 0, .26)\r\n}\r\n\r\ntable.md-table td.md-cell md-select > .md-select-value > span.md-select-icon {\r\n  -webkit-justify-content: flex-end;\r\n  -ms-flex-pack: end;\r\n  justify-content: flex-end;\r\n  color: rgba(0, 0, 0, .54);\r\n  width: 18px;\r\n  text-align: right\r\n}\r\n\r\ntable.md-table td.md-cell md-select > .md-select-value > span.md-select-icon:after {\r\n  -webkit-transform: scaleY(0.4) scaleX(0.8);\r\n  transform: scaleY(0.4) scaleX(0.8)\r\n}\r\n\r\ntable.md-table md-checkbox {\r\n  box-sizing: border-box;\r\n  display: inline-block;\r\n  margin-bottom: 16px;\r\n  white-space: nowrap;\r\n  cursor: pointer;\r\n  outline: none;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n  position: relative;\r\n  min-width: 20px;\r\n  min-height: 20px;\r\n  margin-left: 0;\r\n  margin-right: 16px;\r\n}\r\n"
 
         /***/
     },
-    /* 493 */
+    /* 522 */
     /***/ function (module, exports) {
 
         module.exports = "<table class=\"md-table\" layout-fill>\r\n    <thead>\r\n    <tr>\r\n        <!--<th class=\"md-column\" *ngIf=\"config.selectable\">-->\r\n        <!--<md-checkbox [(ngModel)]=\"selected\"></md-checkbox>-->\r\n        <!--</th>-->\r\n\r\n        <th class=\"md-column md-sort\" *ngFor=\"let column of columns; let thInd = index\">\r\n\r\n\r\n            <md-checkbox *ngIf=\"column.selectable\"\r\n                         [(ngModel)]=\"allSelected\"\r\n                         (ngModelChange)=\"onAllSelected()\">\r\n            </md-checkbox>\r\n\r\n            <div *ngIf=\"!config || !column.sort\">\r\n                <span>{{column.title}}</span>\r\n            </div>\r\n\r\n            <a *ngIf=\"config && column.sort\"\r\n               [ng2TableViewSortable]=\"config\"\r\n               [index]=thInd\r\n               [column]=\"column\"\r\n               (sortChanged)=\"onChangeTable($event)\">\r\n                <span>{{column.title}}</span>\r\n                <md-icon class=\"material-icons md-icon md-sort-icon\"\r\n                         [ngClass]=\"{'md-desc': column.sortType === 'desc', 'md-asc': column.sortType === 'asc'}\">\r\n                    arrow_downward\r\n                </md-icon>\r\n            </a>\r\n        </th>\r\n    </tr>\r\n    </thead>\r\n\r\n    <tbody class=\"md-body\">\r\n    <tr *ngFor=\"let row of rows\" class=\"md-row\">\r\n        <td *ngFor=\"let column of columns\" class=\"md-cell\">\r\n\r\n            <table-cell *ngIf=\"column.template\" [cellTemplate]=column.template [cellData]=\"row\"></table-cell>\r\n\r\n            <div *ngIf=\"!column.template\">\r\n                <div class=\"md-cell-data\"> {{row | nestedTableData:column.name | tableData:column}}\r\n                </div>\r\n                <a *ngIf=\"column.modal\" (click)=\"showModal($event,getRowValue(row,column.name))\">\r\n                    <span style=\"color: blue;font-size: 2em;\">...</span>\r\n                </a>\r\n            </div>\r\n\r\n            <div *ngIf=\"column.template\"></div>\r\n        </td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
 
         /***/
     },
-    /* 494 */
+    /* 523 */
     /***/ function (module, exports) {
 
         module.exports = "<md-checkbox [(ngModel)]=\"cellData.selected\"></md-checkbox>"
+
+        /***/
+    },
+    /* 524 */
+    /***/ function (module, exports) {
+
+        module.exports = ".page {\r\n    padding: 10px;\r\n}\r\n\r\n.page .site-sidenav {\r\n    /*background: #106CC8;*/\r\n    border-right: solid 1px gainsboro;\r\n}\r\n\r\n.page md-sidenav.md-sidenav-push {\r\n    /*background: #106CC8 !important;*/\r\n}\r\n\r\n.page .site-sidenav, .site-sidenav.md-locked-open-add-active, .page .site-sidenav.md-locked-open {\r\n    width: 200px;\r\n    min-width: 200px;\r\n    max-width: 200px;\r\n}\r\n\r\n.page .docs-menu .menu-toggle-list a.md-button {\r\n    display: block;\r\n    padding: 0 16px 0 32px;\r\n    text-transform: none;\r\n    text-rendering: optimizeLegibility;\r\n    font-weight: 500;\r\n}\r\n\r\n\r\n"
+
+        /***/
+    },
+    /* 525 */
+    /***/ function (module, exports) {
+
+        module.exports = "<div class=\"page\">\r\n\r\n    <md-sidenav-layout>\r\n        <md-sidenav #start\r\n                    mode=\"side\"\r\n                    opened=\"true\"\r\n                    md-disable-backdrop\r\n                    class=\"md-sidenav-left site-sidenav \">\r\n\r\n            <md-toolbar class=\"md-theme-indigo\">\r\n                <h1 class=\"md-toolbar-tools\">Ng2TableView</h1>\r\n            </md-toolbar>\r\n            <md-content layout-padding ng-controller=\"LeftCtrl\">\r\n                <md-nav-list>\r\n                    <md-list-item>\r\n                        <button md-button [routerLink]=\"['TableView']\">\r\n                            TableView\r\n                        </button>\r\n                    </md-list-item>\r\n                    <md-list-item>\r\n                        <button md-button [routerLink]=\"['RegularTable']\">\r\n                            Pagination\r\n                        </button>\r\n                    </md-list-item>\r\n                    <md-list-item>\r\n                        <button md-button [routerLink]=\"['FilterTable']\">\r\n                            Filter && Sort\r\n                        </button>\r\n                    </md-list-item>\r\n                    <md-list-item>\r\n                        <button md-button [routerLink]=\"['CustomTemplateTable']\">\r\n                            Custom Cell\r\n                        </button>\r\n                    </md-list-item>\r\n                </md-nav-list>\r\n            </md-content>\r\n\r\n\r\n        </md-sidenav>\r\n\r\n\r\n        <router-outlet></router-outlet>\r\n    </md-sidenav-layout>\r\n</div>\r\n"
+
+        /***/
+    },
+    /* 526 */
+    /***/ function (module, exports) {
+
+        module.exports = "<md-input placeholder=\"name\" [(ngModel)]=\"cellData.name\"></md-input>"
+
+        /***/
+    },
+    /* 527 */
+    /***/ function (module, exports) {
+
+        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n\r\n        <div layout-gt-sm=\"row\">\r\n            <md-input placeholder=\"filter by index\"\r\n                      class=\"col\"\r\n                      [column]=\"'index'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n\r\n            <md-input placeholder=\"filter by name\"\r\n                      class=\"col\"\r\n                      style=\"margin-left: 2em\"\r\n                      [column]=\"'name'\"\r\n                      [ng2TableViewFilter]=\"tableBuilder.filtering\"\r\n                      (tableChanged)=\"onChangeTable($event)\">\r\n            </md-input>\r\n        </div>\r\n\r\n\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n\r\n        <h1>Usage</h1>\r\n        <md-tab-group>\r\n            <md-tab>\r\n                <template md-tab-label>Markup</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{0}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>TypeScript</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{1}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>Columns</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{2}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n        </md-tab-group>\r\n    </md-content>\r\n\r\n\r\n</div>\r\n"
+
+        /***/
+    },
+    /* 528 */
+    526,
+    /* 529 */
+    /***/ function (module, exports) {
+
+        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n\r\n\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n\r\n        <h1>Usage</h1>\r\n        <md-tab-group>\r\n            <md-tab>\r\n                <template md-tab-label>Markup</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{0}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>TypeScript</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{1}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>Columns</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{2}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>Cell Template</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{3}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n        </md-tab-group>\r\n    </md-content>\r\n\r\n\r\n</div>\r\n"
+
+        /***/
+    },
+    /* 530 */
+    527,
+    /* 531 */
+    /***/ function (module, exports) {
+
+        module.exports = "<div class=\"page\">\r\n    <md-content layout-padding>\r\n        <ng2TableView [config]=\"tableBuilder\"\r\n                      (tableChanged)=\"onChangeTable($event)\"\r\n                      [rows]=\"tableBuilder.rows\"\r\n                      [columns]=\"tableBuilder.columns\">\r\n        </ng2TableView>\r\n\r\n        <div class=\"text-center\">\r\n            <ngTableViewPaging [config]=\"tableBuilder\" (pageChanged)=\"onChangeTable($event)\"></ngTableViewPaging>\r\n        </div>\r\n\r\n        <h1>Usage</h1>\r\n        <md-tab-group>\r\n            <md-tab>\r\n                <template md-tab-label>Markup</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{0}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>TypeScript</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{1}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n            <md-tab>\r\n                <template md-tab-label>Columns</template>\r\n                <template md-tab-content>\r\n                    <pre class=\"language-html\"><code class=\"language-html\">{2}</code></pre>\r\n                </template>\r\n            </md-tab>\r\n        </md-tab-group>\r\n\r\n    </md-content>\r\n</div>\r\n\r\n\r\n"
 
         /***/
     }
