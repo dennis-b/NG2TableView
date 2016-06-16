@@ -1,0 +1,16 @@
+<div layout-gt-sm="row">
+    <md-input placeholder="filter by index"
+              class="col"
+              [column]="'index'"
+              [ng2TableViewFilter]="tableBuilder.filtering"
+              (tableChanged)="onChangeTable($event)">
+    </md-input>
+
+    <md-input placeholder="filter by name"
+              class="col"
+              style="margin-left: 2em"
+              [column]="'name'"
+              [ng2TableViewFilter]="tableBuilder.filtering"
+              (tableChanged)="onChangeTable($event)">
+    </md-input>
+</div>

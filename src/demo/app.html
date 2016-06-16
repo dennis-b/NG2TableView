@@ -13,13 +13,23 @@
             <md-content layout-padding ng-controller="LeftCtrl">
                 <md-nav-list>
                     <md-list-item>
-                        <button md-button [routerLink]="['CustomTable']">
-                            custom table
+                        <button md-button [routerLink]="['TableView']">
+                            TableView
                         </button>
                     </md-list-item>
                     <md-list-item>
                         <button md-button [routerLink]="['RegularTable']">
-                            regular table
+                            Pagination
+                        </button>
+                    </md-list-item>
+                    <md-list-item>
+                        <button md-button [routerLink]="['FilterTable']">
+                            Filter && Sort
+                        </button>
+                    </md-list-item>
+                    <md-list-item>
+                        <button md-button [routerLink]="['CustomTemplateTable']">
+                            Custom Cell
                         </button>
                     </md-list-item>
                 </md-nav-list>

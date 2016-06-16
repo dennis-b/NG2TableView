@@ -24,5 +24,7 @@ import '@angular2-material/checkbox';
 import '@angular2-material/sidenav';
 import '@angular2-material/input';
 import '@angular2-material/icon';
+import '@angular2-material/tabs';
 // look in src/platform/angular2-material2 and src/platform/providers
 
+import 'prismjs';

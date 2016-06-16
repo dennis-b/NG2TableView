@@ -9,10 +9,10 @@ import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "NG2TableView";
 let html = require('!!prismjs?lang=markup!./prism/template.html');
 let ts = require('!!prismjs?lang=typescript!./prism/table.ts');
 let cols = require("!!prismjs?lang=typescript!./cols/columns");
-let template = require('./regular-table.html');
+let template = require('./filter-table.html');
 
 @Component({
-    selector: "demo-page",
+    selector: "filter-table",
     directives: [NG_TABLE_VIEW_DIRECTIVES],
     providers: [],
     pipes: [],
@@ -24,7 +24,7 @@ let template = require('./regular-table.html');
         .toPromise()
         .then((data)=> next.routeData.data['users'] = data)
 })
-export class RegularTable extends TableView implements OnActivate {
+export class FilterTable extends TableView implements OnActivate {
 
     private users:Array<any>;
 

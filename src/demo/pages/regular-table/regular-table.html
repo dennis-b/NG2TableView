@@ -9,6 +9,29 @@
         <div class="text-center">
             <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
         </div>
+
+        <h1>Usage</h1>
+        <md-tab-group>
+            <md-tab>
+                <template md-tab-label>Markup</template>
+                <template md-tab-content>
+                    <pre class="language-html"><code class="language-html">{0}</code></pre>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>TypeScript</template>
+                <template md-tab-content>
+                    <pre class="language-html"><code class="language-html">{1}</code></pre>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>Columns</template>
+                <template md-tab-content>
+                    <pre class="language-html"><code class="language-html">{2}</code></pre>
+                </template>
+            </md-tab>
+        </md-tab-group>
+
     </md-content>
 </div>
 

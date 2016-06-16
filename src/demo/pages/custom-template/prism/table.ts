@@ -1,30 +1,16 @@
 import {Component} from '@angular/core';
-import {Http} from '@angular/http';
 import {CanActivate, OnActivate, ComponentInstruction} from "@angular/router-deprecated";
-import {PageTableColumns} from "./cols/columns";
-import {Utils} from "../../utils/app-utils";
+import {PageTableColumns} from "../cols/columns";
 import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "NG2TableView";
 
-
-let html = require('!!prismjs?lang=markup!./prism/template.html');
-let ts = require('!!prismjs?lang=typescript!./prism/table.ts');
-let cols = require("!!prismjs?lang=typescript!./cols/columns");
-let template = require('./regular-table.html');
-
 @Component({
-    selector: "demo-page",
+    selector: "table-comp",
     directives: [NG_TABLE_VIEW_DIRECTIVES],
     providers: [],
     pipes: [],
-    template: Utils.format(template, html, ts, cols)
+    template: require('./regular-table.html')
 })
-@CanActivate((next) => {
-    return Utils.getService(Http).get('demo/data/data.json')
-        .map(res => res.json())
-        .toPromise()
-        .then((data)=> next.routeData.data['users'] = data)
-})
-export class RegularTable extends TableView implements OnActivate {
+export class RegularTable extends TableView {
 
     private users:Array<any>;
 
@@ -45,8 +31,5 @@ export class RegularTable extends TableView implements OnActivate {
             .setItemsPerPage(5);
 
         this.buildTable();
-
     }
-
-
 }

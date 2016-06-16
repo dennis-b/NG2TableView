@@ -1,23 +1,6 @@
 <div class="page">
     <md-content layout-padding>
 
-        <div layout-gt-sm="row">
-            <md-input placeholder="filter by index"
-                      class="col"
-                      [column]="'index'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
-                      (tableChanged)="onChangeTable($event)">
-            </md-input>
-
-            <md-input placeholder="filter by name"
-                      class="col"
-                      style="margin-left: 2em"
-                      [column]="'name'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
-                      (tableChanged)="onChangeTable($event)">
-            </md-input>
-        </div>
-
 
         <ng2TableView [config]="tableBuilder"
                       (tableChanged)="onChangeTable($event)"
@@ -48,6 +31,12 @@
                 <template md-tab-label>Columns</template>
                 <template md-tab-content>
                     <pre class="language-html"><code class="language-html">{2}</code></pre>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>Cell Template</template>
+                <template md-tab-content>
+                    <pre class="language-html"><code class="language-html">{3}</code></pre>
                 </template>
             </md-tab>
         </md-tab-group>
