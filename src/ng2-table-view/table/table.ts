@@ -18,7 +18,7 @@ import {TableCell} from "./directive/table-cell-custom-template";
 export class NgTableView {
     public rows:Array<any> = [];
     public config:any = {};
-    private allSelected:boolean = false;
+    private allSelected:any;
     @Output() tableChanged:EventEmitter<any> = new EventEmitter();
 
     constructor(public element:ElementRef) {
@@ -27,7 +27,7 @@ export class NgTableView {
     onAllSelected() {
         for (var i = 0; i < this.config.data.length; i++) {
             var row = this.config.data[i];
-            row.selected = this.allSelected;
+            row.selected = this.allSelected.checked;
         }
     }
 
