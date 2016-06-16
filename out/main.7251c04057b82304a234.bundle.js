@@ -16644,14 +16644,13 @@ webpackJsonp([2], [
                 this.element = element;
                 this.rows = [];
                 this.config = {};
-                this.allSelected = false;
                 this.tableChanged = new core_1.EventEmitter();
             }
 
             NgTableView.prototype.onAllSelected = function () {
                 for (var i = 0; i < this.config.data.length; i++) {
                     var row = this.config.data[i];
-                    row.selected = this.allSelected;
+                    row.selected = this.allSelected.checked;
                 }
             };
             NgTableView.prototype.onChangeTable = function (column) {
