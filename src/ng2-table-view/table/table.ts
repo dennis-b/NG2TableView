@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ElementRef} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {MATERIAL_DIRECTIVES} from "../../platform/browser/angular2-material2";
 import {Ng2TableViewSortable} from './directive/sorting';
 import {NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
@@ -21,10 +21,12 @@ export class NgTableView {
     private allSelected:any;
     @Output() tableChanged:EventEmitter<any> = new EventEmitter();
 
-    constructor(public element:ElementRef) {
+    constructor() {
     }
 
     onAllSelected() {
+        console.log(this.allSelected);
+
         for (var i = 0; i < this.config.data.length; i++) {
             var row = this.config.data[i];
             row.selected = this.allSelected.checked;

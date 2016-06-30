@@ -1,11 +1,10 @@
 import {TableColumn} from "./TableColumn";
 export class SelectTableColumn extends TableColumn {
-    selectable:boolean;
+    private selectable:boolean = true;
 
     constructor() {
         super();
-        this.selectable = true;
-
+        this.setTemplate(require("../template/select.html"));
     }
 
 }

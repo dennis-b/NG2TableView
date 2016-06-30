@@ -59,10 +59,7 @@ export class TableView {
 
     buildTable() {
         if (this.tableBuilder.selectable) {
-            var tableColumn = new SelectTableColumn()
-                .setTemplate(require("../template/select.html"));
-            this.tableBuilder.insertCol(0, tableColumn)
-
+            this.tableBuilder.insertCol(0, new SelectTableColumn())
         }
         this.onChangeTable();
 

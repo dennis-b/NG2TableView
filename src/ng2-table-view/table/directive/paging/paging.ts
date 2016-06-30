@@ -54,6 +54,7 @@ export class NgTableViewPaging {
   }
 
   selectPage(page, event) {
+    console.log(this.config)
     if (!_.isEmpty(this.config) && page) {
       this.config.page = Number(page);
       this.pageChanged.emit(this.config);
