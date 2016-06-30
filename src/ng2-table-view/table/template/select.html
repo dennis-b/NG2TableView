@@ -1,1 +1,1 @@
-<md-checkbox [checked]="cellData.selected"></md-checkbox>
+<md-checkbox [checked]="cellData.selected?.checked" (change)="cellData.selected = $event"></md-checkbox>

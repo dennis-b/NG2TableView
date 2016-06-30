@@ -39,11 +39,7 @@
             <table-cell *ngIf="column.template" [cellTemplate]=column.template [cellData]="row"></table-cell>
 
             <div *ngIf="!column.template">
-                <div class="md-cell-data"> {{row | nestedTableData:column.name | tableData:column}}
-                </div>
-                <a *ngIf="column.modal" (click)="showModal($event,getRowValue(row,column.name))">
-                    <span style="color: blue;font-size: 2em;">...</span>
-                </a>
+                <div class="md-cell-data"> {{row | nestedTableData:column.name | tableData:column:row}}</div>
             </div>
 
             <div *ngIf="column.template"></div>

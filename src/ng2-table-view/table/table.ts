@@ -29,7 +29,7 @@ export class NgTableView {
 
         for (var i = 0; i < this.config.data.length; i++) {
             var row = this.config.data[i];
-            row.selected = this.allSelected.checked;
+            row.selected = this.allSelected;
         }
     }
 
