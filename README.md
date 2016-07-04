@@ -39,12 +39,11 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
   export class Page extends TableView {
   
       constructor(private activatedRoute:ActivatedRoute) {
-          super([]);
+          super(activatedRoute.snapshot.params["users"]);
       }
   
       ngOnInit() {
           this.getBuilder()
-              .setData(this.activatedRoute.snapshot.params["users"])
               .addCols(PageTableColumns)
               .setPaging(true)
               .setItemsPerPage(5)

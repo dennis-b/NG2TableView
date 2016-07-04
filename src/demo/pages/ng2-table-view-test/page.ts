@@ -13,12 +13,11 @@ import {ActivatedRoute} from "@angular/router";
 export class Page extends TableView {
 
     constructor(private activatedRoute:ActivatedRoute) {
-        super([]);
+        super(activatedRoute.snapshot.params["users"]);
     }
 
     ngOnInit() {
         this.getBuilder()
-            .setData(this.activatedRoute.snapshot.params["users"])
             .addCols(PageTableColumns)
             .setPaging(true)
             .setItemsPerPage(5)
