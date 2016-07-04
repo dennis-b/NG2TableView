@@ -9,8 +9,8 @@
 
 
             <md-checkbox *ngIf="column.selectable"
-                         [(ngModel)]="allSelected"
-                         (ngModelChange)="onAllSelected()">
+                         [checked]="allSelected.checked"
+                         (change)="onAllSelected($event)">
             </md-checkbox>
 
             <div *ngIf="!config || !column.sort">

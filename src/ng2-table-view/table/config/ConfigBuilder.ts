@@ -6,6 +6,7 @@ export class TableConfigBuilder {
 
     public data:Array<any> = [];
     public rows:Array<any> = [];
+    public filtered:Array<any> = [];
     public columns:Array<ColumnIfc> = [];
     public page:number = 1;
     public itemsPerPage:number = 10;

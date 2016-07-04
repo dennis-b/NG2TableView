@@ -5,10 +5,11 @@
  * Platform and Environment
  * our providers/directives/pipes
  */
-import {DIRECTIVES, PIPES, PROVIDERS} from '../platform/browser';
 import {bootstrap} from '@angular/platform-browser-dynamic';
+
+import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ComponentRef} from '@angular/core';
-import {ENV_PROVIDERS} from '../platform/environment';
+import {ENV_PROVIDERS, decorateComponentRef} from './platform/environment';
 /*
  * App Component
  * our top level component that holds all of our components
@@ -29,20 +30,18 @@ export function main(initialHmrState?:any):Promise<any> {
         ...PIPES
     ])
         .then((appRef:ComponentRef<any>) => {
-            // store a reference to the application injector
             setInjector(appRef.injector);
+            decorateComponentRef(appRef);
         })
         .catch(err => console.error(err));
-
 }
 
 
-/*
- * Vendors
- * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
- * You can also import them in vendors to ensure that they are bundled in one file
- * Also see custom-typings.d.ts as you also need to do `typings install x` where `x` is your module
- */
-
-
-document.addEventListener('DOMContentLoaded', () => main());
+if ('development' === ENV && HMR === true) {
+    // activate hot module reload
+    let ngHmr = require('angular2-hmr');
+    ngHmr.hotModuleReplacement(main, module);
+} else {
+    // bootstrap when document is ready
+    document.addEventListener('DOMContentLoaded', () => main());
+}

@@ -62,12 +62,16 @@ export class TableView {
             this.tableBuilder.insertCol(0, new SelectTableColumn())
         }
         this.onChangeTable();
-
     }
 
-
     onChangeTable(config?:any) {
+        let data = this.getFilteredAndSortedData(config);
+        this.tableBuilder.filtered = data;
+        this.tableBuilder.rows = this.tableBuilder.paging ? this.changePage(this.tableBuilder, data) : data;
+        this.tableBuilder.length = data.length;
+    }
 
+    getFilteredAndSortedData(config:any) {
         if (config && config.filtering) {
             Object.assign(this.tableBuilder.filtering, config.filtering);
         }
@@ -77,9 +81,7 @@ export class TableView {
         }
 
         let filteredData = this.changeFilter(this.tableBuilder.data, this.tableBuilder);
-        let sortedData = this.changeSort(filteredData, this.tableBuilder);
-        this.tableBuilder.rows = this.tableBuilder.paging ? this.changePage(this.tableBuilder, sortedData) : sortedData;
-        this.tableBuilder.length = sortedData.length;
+        return this.changeSort(filteredData, this.tableBuilder);
     }
 
 

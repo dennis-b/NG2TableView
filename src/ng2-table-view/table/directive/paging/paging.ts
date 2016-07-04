@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef, Renderer, Input} from '@angular/core';
+import {Component, EventEmitter, ElementRef, Renderer, Input, OnChanges, SimpleChanges} from '@angular/core';
 import * as _ from 'underscore'
 @Component({
   selector: 'ngTableViewPaging',
@@ -6,15 +6,22 @@ import * as _ from 'underscore'
   template: require("./pagination.html"),
   styles: [require("./paging.css")]
 })
-export class NgTableViewPaging {
+export class NgTableViewPaging implements OnChanges {
+
 
   @Input() public config:any = {};
+  @Input() public dataLength:number = 0;
 
   public pageChanged:EventEmitter<any> = new EventEmitter();
   private totalPages:number = 1;
   private totalPagesArr:Array<number> = [];
 
   constructor() {
+  }
+
+  ngOnChanges(changes:SimpleChanges):any {
+    this.totalPages = this.calculateTotalPages();
+    this.totalPagesArr = new Array(this.totalPages);
   }
 
   ngOnInit() {
@@ -33,11 +40,10 @@ export class NgTableViewPaging {
     return Number(val);
   }
 
-
   calculateTotalPages() {
     var totalPages = this.config.itemsPerPage < 1
       ? 1
-      : Math.ceil(this.config.length / this.config.itemsPerPage);
+        : Math.ceil(this.dataLength / this.config.itemsPerPage);
     return Math.max(totalPages || 0, 1);
   }
 
@@ -54,7 +60,6 @@ export class NgTableViewPaging {
   }
 
   selectPage(page, event) {
-    console.log(this.config)
     if (!_.isEmpty(this.config) && page) {
       this.config.page = Number(page);
       this.pageChanged.emit(this.config);
