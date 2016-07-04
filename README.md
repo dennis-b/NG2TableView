@@ -109,7 +109,10 @@ export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
         </ng2TableView>
 
         <div class="text-center">
-            <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
+            <ngTableViewPaging [config]="tableBuilder"
+                               [dataLength]="tableBuilder.length"
+                               (pageChanged)="onChangeTable($event)">
+            </ngTableViewPaging>
         </div>
     </md-content>
 </div>
