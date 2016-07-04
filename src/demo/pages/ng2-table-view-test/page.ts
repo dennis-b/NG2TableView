@@ -25,8 +25,5 @@ export class Page extends TableView {
             .setSelectable(true);
 
         this.buildTable();
-
     }
-
-
 }
