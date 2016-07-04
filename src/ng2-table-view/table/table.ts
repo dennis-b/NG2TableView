@@ -27,14 +27,9 @@ export class NgTableView {
 
     onAllSelected($event) {
         this.allSelected = $event;
-        for (var i = 0; i < this.config.data.length; i++) {
-            var item = this.config.data[i];
-            if (_.contains(this.config.filtered, item)) {
-                item.selected = this.allSelected;
-            } else {
-                item.selected = {};
-            }
-        }
+        this.config.data.map((item)=> {
+            item.selected = _.contains(this.config.filtered, item) ? this.allSelected : {};
+        });
     }
 
     onChangeTable(column:any) {
