@@ -1,4 +1,4 @@
 /**
- * Created by Dennis on 17/05/2016.
+ * Created by Dennis
  */
 export * from './ng2-table-view';
