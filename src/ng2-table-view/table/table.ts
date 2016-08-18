@@ -1,7 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {MATERIAL_DIRECTIVES} from "../../ng2-material";
-import {Ng2TableViewSortable} from './directive/sorting';
-import {NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {TableDataPipe} from "./pipes/table-data-pipe";
 import {NestedTableDataPipe} from "./pipes/nested-table-data-pipe";
 import {TableCell} from "./directive/table-cell-custom-template";
@@ -10,7 +7,7 @@ import * as _ from 'underscore'
 @Component({
     selector: 'ng2TableView, [ng2TableView]',
     inputs: ['rows', 'columns', 'config'],
-    directives: [Ng2TableViewSortable, TableCell, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES, MATERIAL_DIRECTIVES],
+    directives: [TableCell],
     pipes: [TableDataPipe, NestedTableDataPipe],
     styles: [require('./table.css')],
     template: require('./table.html')

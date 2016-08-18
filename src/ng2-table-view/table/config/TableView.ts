@@ -7,7 +7,7 @@ export class TableView {
     public tableData:Array<any> = [];
     public tableBuilder:TableConfigBuilder;
 
-    constructor(data) {
+    constructor(data?) {
         this.tableBuilder = new TableConfigBuilder(data || []);
     }
 

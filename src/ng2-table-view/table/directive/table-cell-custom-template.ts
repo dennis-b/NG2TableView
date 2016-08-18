@@ -1,4 +1,13 @@
-import {Component, ViewContainerRef, Input, ComponentResolver, ViewChild} from "@angular/core";
+import {
+    Component,
+    OnInit,
+    ViewContainerRef,
+    ReflectiveInjector,
+    Input,
+    Compiler,
+    ViewChild,
+    ComponentMetadata
+} from "@angular/core";
 
 function compileToComponent(template, data) {
     @Component({
@@ -6,7 +15,7 @@ function compileToComponent(template, data) {
         template: template
     })
     class CellComponent {
-        private cellData:any = {};
+        private cellData: any = {};
 
         constructor() {
             this.cellData = data;
@@ -19,18 +28,23 @@ function compileToComponent(template, data) {
     selector: 'table-cell',
     template: '<div #target></div>'
 })
-export class TableCell {
+export class TableCell implements OnInit {
 
     @ViewChild('target', {read: ViewContainerRef}) target;
-    @Input() public cellTemplate:String = '';
-    @Input() public cellData:any = {};
+    @Input() public cellTemplate: String = '';
+    @Input() public cellData: any = {};
 
-    constructor(private componentResolver:ComponentResolver, private viewContainerRef:ViewContainerRef) {
+    constructor(private viewContainerRef: ViewContainerRef, private compiler: Compiler) {
     }
 
     ngOnInit() {
-        this.componentResolver.resolveComponent(compileToComponent(this.cellTemplate, this.cellData)).then((factory) => {
-            this.target.createComponent(factory, 0, this.viewContainerRef.injector);
-        });
+        this.compiler.compileComponentAsync(compileToComponent(this.cellTemplate, this.cellData))
+            .then(factory => {
+                const injector = ReflectiveInjector.fromResolvedProviders([], this.viewContainerRef.parentInjector);
+                this.viewContainerRef.clear();
+                this.viewContainerRef.createComponent(factory, 0, injector);
+            });
+
+
     }
 }

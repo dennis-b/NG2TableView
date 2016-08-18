@@ -2,10 +2,13 @@
     <md-content layout-padding>
 
         <div layout-gt-sm="row">
-            <md-input placeholder="filter by index"
+
+
+            <md-input type="text"
+                      placeholder="filter by index"
                       class="col"
                       [column]="'index'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      ng2TableViewFilter="tableBuilder.filtering"
                       (tableChanged)="onChangeTable($event)">
             </md-input>
 
@@ -13,7 +16,7 @@
                       class="col"
                       style="margin-left: 2em"
                       [column]="'name'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      ng2TableViewFilter="tableBuilder.filtering"
                       (tableChanged)="onChangeTable($event)">
             </md-input>
         </div>

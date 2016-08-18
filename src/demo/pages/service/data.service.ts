@@ -1,21 +1,19 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 
 @Injectable()
-export class DataService implements CanActivate {
+export class DataService implements Resolve<any> {
 
-    constructor(private http:Http) {
+
+    constructor(private http: Http) {
     }
 
-    canActivate(next:ActivatedRouteSnapshot, state:RouterStateSnapshot):Observable<boolean>|boolean {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>|Promise<any>|any {
         return this.http.get('demo/data/data.json')
-            .map(res => {
-                next.params['users'] = res.json();
-                return true;
-            })
-            .take(1);
+            .map(res => res.json())
+
     }
 }

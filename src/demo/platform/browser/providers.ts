@@ -13,9 +13,8 @@ import {HTTP_PROVIDERS} from '@angular/http';
 // Angular 2 Router
 import {provideRouter} from '@angular/router';
 
-import {MATERIAL_PROVIDERS} from '../../../ng2-material';
 
-import {routes} from '../../app.routes';
+import {routes} from '../../app/app.routes';
 import {DataService} from "../../pages/service/data.service";
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 /*
@@ -26,7 +25,6 @@ export const APPLICATION_PROVIDERS = [
     DataService,
     ...FORM_PROVIDERS,
     ...HTTP_PROVIDERS,
-    ...MATERIAL_PROVIDERS,
     provideRouter(routes),
     disableDeprecatedForms(),
     provideForms(),

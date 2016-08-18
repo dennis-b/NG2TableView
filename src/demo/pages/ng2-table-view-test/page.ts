@@ -1,19 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PageTableColumns} from "./cols/columns";
-import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "../../../ng2-table-view";
-import {ActivatedRoute} from "@angular/router";
+import {TableView} from "../../../ng2-table-view";
+import {Route, ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "demo-page",
-    directives: [NG_TABLE_VIEW_DIRECTIVES],
+    directives: [],
     providers: [],
     pipes: [],
     template: require('./page.html')
 })
-export class Page extends TableView {
+export class Page extends TableView implements OnInit {
 
-    constructor(private activatedRoute:ActivatedRoute) {
-        super(activatedRoute.snapshot.params["users"]);
+    constructor(private route: ActivatedRoute) {
+        super(route.data.getValue().users);
     }
 
     ngOnInit() {

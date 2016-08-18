@@ -23,23 +23,35 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
 
 
 ## Usage
- ```bash
-  import {Component} from '@angular/core';
+
+**import module in yours AppModule:**
+
+```
+import {Ng2TableViewModule} from "ng2-table-view";
+@NgModule({
+    imports: [Ng2TableViewModule, ...],
+   ...
+})
+export class AppModule {
+}
+
+```
+
+## some-comp.ts
+```bash
+  import {TableView} from "ng2-table-view";
+  import {Component, OnInit} from '@angular/core';
   import {PageTableColumns} from "./cols/columns";
-  import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "../../../ng2-table-view";
-  import {ActivatedRoute} from "@angular/router";
+  import {Route, ActivatedRoute} from "@angular/router";
   
   @Component({
       selector: "demo-page",
-      directives: [NG_TABLE_VIEW_DIRECTIVES],
-      providers: [],
-      pipes: [],
       template: require('./page.html')
   })
-  export class Page extends TableView {
+  export class Page extends TableView implements OnInit {
   
-      constructor(private activatedRoute:ActivatedRoute) {
-          super(activatedRoute.snapshot.params["users"]);
+      constructor(private route: ActivatedRoute) {
+          super(route.data.getValue().users);
       }
   
       ngOnInit() {
@@ -52,7 +64,7 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
           this.buildTable();
       }
   }
-  ```
+```
 
 ## columns.ts
 ```bash
@@ -78,10 +90,11 @@ export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
 <div class="page">
     <md-content layout-padding>
         <div layout-gt-sm="row">
-            <md-input placeholder="filter by index"
+            <md-input type="text"
+                      placeholder="filter by index"
                       class="col"
                       [column]="'index'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      ng2TableViewFilter="tableBuilder.filtering"
                       (tableChanged)="onChangeTable($event)">
             </md-input>
         </div>
@@ -100,6 +113,7 @@ export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
         </div>
     </md-content>
 </div>
+
 ```
 
 ...
