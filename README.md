@@ -29,7 +29,7 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
 ```
 import {Ng2TableViewModule} from "ng2-table-view";
 @NgModule({
-    imports: [**Ng2TableViewModule**, ...],
+    imports: [Ng2TableViewModule, ...],
    ...
 })
 export class AppModule {
@@ -55,11 +55,11 @@ export class AppModule {
       }
   
       ngOnInit() {
-          **this.getBuilder()
+          this.getBuilder()
               .addCols(PageTableColumns)
               .setPaging(true)
               .setItemsPerPage(5)
-              .setSelectable(true);**
+              .setSelectable(true);
   
           this.buildTable();
       }
