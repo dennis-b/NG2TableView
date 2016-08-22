@@ -5,7 +5,7 @@
             <md-input placeholder="filter by index"
                       class="col"
                       [column]="'index'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      ng2TableViewFilter="tableBuilder.filtering"
                       (tableChanged)="onChangeTable($event)">
             </md-input>
 
@@ -13,7 +13,7 @@
                       class="col"
                       style="margin-left: 2em"
                       [column]="'name'"
-                      [ng2TableViewFilter]="tableBuilder.filtering"
+                      ng2TableViewFilter="tableBuilder.filtering"
                       (tableChanged)="onChangeTable($event)">
             </md-input>
         </div>
@@ -25,9 +25,10 @@
                       [columns]="tableBuilder.columns">
         </ng2TableView>
 
-        <div class="text-center">
-            <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
-        </div>
+        <ngTableViewPaging [config]="tableBuilder"
+                           [dataLength]="tableBuilder.length"
+                           (pageChanged)="onChangeTable($event)">
+        </ngTableViewPaging>
 
 
         <h1>Usage</h1>
@@ -41,13 +42,13 @@
             <md-tab>
                 <template md-tab-label>TypeScript</template>
                 <template md-tab-content>
-                    <pre class="language-html"><code class="language-html">{1}</code></pre>
+                    <pre class="language-html"><code class="language-html" [innerHtml]="code"></code></pre>
                 </template>
             </md-tab>
             <md-tab>
                 <template md-tab-label>Columns</template>
                 <template md-tab-content>
-                    <pre class="language-html"><code class="language-html">{2}</code></pre>
+                    <pre class="language-html"><code class="language-html" [innerHtml]="cols"></code></pre>
                 </template>
             </md-tab>
         </md-tab-group>

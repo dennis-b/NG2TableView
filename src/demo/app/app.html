@@ -10,29 +10,30 @@
             <md-toolbar class="md-theme-indigo">
                 <h1 class="md-toolbar-tools">Ng2TableView</h1>
             </md-toolbar>
-            <md-content layout-padding ng-controller="LeftCtrl">
-                <md-nav-list>
+
+            <md-content layout-padding ng-controller="LeftCtrl" style="overflow: hidden">
+                <md-list>
                     <md-list-item>
-                        <button md-button [routerLink]="['TableView']">
+                        <button md-button [routerLink]="'table-view'">
                             TableView
                         </button>
                     </md-list-item>
                     <md-list-item>
-                        <button md-button [routerLink]="['RegularTable']">
+                        <button md-button [routerLink]="'pagination-table'">
                             Pagination
                         </button>
                     </md-list-item>
                     <md-list-item>
-                        <button md-button [routerLink]="['FilterTable']">
+                        <button md-button [routerLink]="'filter-table'">
                             Filter && Sort
                         </button>
                     </md-list-item>
                     <md-list-item>
-                        <button md-button [routerLink]="['CustomTemplateTable']">
+                        <button md-button [routerLink]="'custom-template-table'">
                             Custom Cell
                         </button>
                     </md-list-item>
-                </md-nav-list>
+                </md-list>
             </md-content>
 
 

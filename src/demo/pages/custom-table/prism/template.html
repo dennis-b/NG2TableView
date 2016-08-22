@@ -2,7 +2,7 @@
     <md-input placeholder="filter by index"
               class="col"
               [column]="'index'"
-              [ng2TableViewFilter]="tableBuilder.filtering"
+              ng2TableViewFilter="tableBuilder.filtering"
               (tableChanged)="onChangeTable($event)">
     </md-input>
 
@@ -22,6 +22,7 @@
               [columns]="tableBuilder.columns">
 </ng2TableView>
 
-<div class="text-center">
-    <ngTableViewPaging [config]="tableBuilder" (pageChanged)="onChangeTable($event)"></ngTableViewPaging>
-</div>
+<ngTableViewPaging [config]="tableBuilder"
+                   [dataLength]="tableBuilder.length"
+                   (pageChanged)="onChangeTable($event)">
+</ngTableViewPaging>

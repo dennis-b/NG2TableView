@@ -1,35 +1,55 @@
-import {Component} from '@angular/core';
-import {CanActivate, OnActivate, ComponentInstruction} from "@angular/router-deprecated";
-import {PageTableColumns} from "../cols/columns";
-import {NG_TABLE_VIEW_DIRECTIVES, TableView} from "NG2TableView";
+export const code = `import {Component} from "@angular/core"
+import {TableView} from "NG2TableView"
+import {PageTableColumns} from "../cols/columns"
 
 @Component({
-    selector: "table-comp",
-    directives: [NG_TABLE_VIEW_DIRECTIVES],
-    providers: [],
-    pipes: [],
-    template: require('./regular-table.html')
+    selector: "pagingTable",
+    template: require("./template.html")
 })
-export class RegularTable extends TableView {
-
-    private users:Array<any>;
+export class PagingTable extends TableView {
 
     constructor() {
-        super([]);
-    }
-
-    routerOnActivate(next:ComponentInstruction, prev:ComponentInstruction):any|Promise<any> {
-        this.users = next.routeData.data['users'];
-        return Promise.resolve(true);
+        super(route.data.getValue().data);
     }
 
     ngOnInit() {
         this.getBuilder()
-            .setData(this.users)
             .addCols(PageTableColumns)
             .setPaging(true)
             .setItemsPerPage(5);
 
         this.buildTable();
     }
-}
+}`;
+
+export const cols = `import {ColumnIfc, TableColumns, TableColumn} from "NG2TableView";
+export const PageTableColumns:Array&ltColumnIfc&gt = new TableColumns()
+    .addCol(new TableColumn()
+        .setTitle("index")
+        .setName("index")
+    )
+    .addCol(new TableColumn()
+        .setTitle("Editable name ")
+        .setName("name")
+    )
+    .addCol(new TableColumn()
+        .setTitle("gender")
+        .setName("gender")
+    )
+    .addCol(new TableColumn()
+        .setTitle("company")
+        .setName("company")
+    )
+    .addCol(new TableColumn()
+        .setTitle("email")
+        .setName("email")
+    )
+    .addCol(new TableColumn()
+        .setTitle("latitude")
+        .setName("location.latitude")
+    )
+    .addCol(new TableColumn()
+        .setTitle("longitude")
+        .setName("location.longitude")
+    )
+    .getCols();`;
