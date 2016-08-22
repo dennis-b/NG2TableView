@@ -6,6 +6,7 @@ import {CustomTemplateTable} from "../pages/custom-template/custom-template";
 import {DataService} from "../service/data.service";
 
 export const routes: Routes = [
+    {path: 'NG2TableView', redirectTo: 'index', pathMatch: 'full'},
     {path: '', redirectTo: 'index', pathMatch: 'full'},
     {path: 'index', component: CustomTable, resolve: {data: DataService}},
     {path: 'table-view', component: CustomTable, resolve: {data: DataService}},

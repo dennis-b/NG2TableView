@@ -12,7 +12,7 @@ export class DataService implements Resolve<any> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>|Promise<any>|any {
-        return this.http.get('demo/data/data.json')
+        return this.http.get('data.json')
             .map(res => res.json())
 
     }
