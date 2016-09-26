@@ -1,10 +1,9 @@
-import {isBlank, isPresent, Json} from '@angular/common/src/facade/lang';
-import {Injectable, PipeTransform, Pipe} from '@angular/core';
+import {Json} from '@angular/common/src/facade/lang';
+import {PipeTransform, Pipe} from '@angular/core';
 import * as moment from 'moment'
 
 @Pipe({name: 'tableData', pure: false})
-@Injectable()
-export class TableDataPipe implements PipeTransform {
+export default class TableDataPipe implements PipeTransform {
     transform(value:any, col:any = null, row:any = null):string {
 
         let val = col.name.split('.').reduce((a, b) => a ? a[b] : "-", row);

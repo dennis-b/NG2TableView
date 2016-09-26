@@ -5,9 +5,6 @@ import {Route, ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "demo-page",
-    directives: [],
-    providers: [],
-    pipes: [],
     template: require('./page.html')
 })
 export class Page extends TableView implements OnInit {
