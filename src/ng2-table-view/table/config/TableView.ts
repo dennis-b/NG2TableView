@@ -1,5 +1,5 @@
 import {TableConfigBuilder} from "./ConfigBuilder";
-import * as _ from 'underscore'
+import * as _ from 'lodash'
 import {SelectTableColumn} from "./SelectTableColumn";
 
 export class TableView {

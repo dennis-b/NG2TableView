@@ -29,13 +29,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 module.exports = webpackMerge(commonConfig, {
 
   /**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
-  debug: false,
-
-  /**
    * Developer tool to enhance debugging
    *
    * See: http://webpack.github.io/docs/configuration.html#devtool
@@ -204,7 +197,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: https://webpack.github.io/docs/configuration.html#node
    */
   node: {
-    global: 'window',
+      global: true,
     crypto: 'empty',
     process: false,
     module: false,
