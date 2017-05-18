@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import * as _ from 'underscore'
+import { Component, EventEmitter, Output } from '@angular/core';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -20,8 +20,8 @@ export class NgTableView {
 
     onAllSelected($event) {
         this.allSelected = $event;
-        this.config.data.map((item)=> {
-            item.selected = _.contains(this.config.filtered, item) ? this.allSelected : {};
+        this.config.data.map((item) => {
+            item.selected = _.includes(this.config.filtered, item) ? this.allSelected : {};
         });
     }
 

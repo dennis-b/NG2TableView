@@ -1,5 +1,5 @@
 import {Component, EventEmitter, ElementRef, Renderer, Input, OnChanges, SimpleChanges} from '@angular/core';
-import * as _ from 'underscore'
+import * as _ from 'lodash'
 
 @Component({
     selector: 'ngTableViewPaging',
