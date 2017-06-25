@@ -27,7 +27,7 @@ Best way to install ***NG2TableView*** is through [npm](https://www.npmjs.com/pa
 **import module in yours AppModule:**
 
 ```
-import {Ng2TableViewModule} from "ng2-table-view";
+import {Ng2TableViewModule} from "NG2TableView";
 @NgModule({
     imports: [Ng2TableViewModule, ...],
    ...
@@ -39,7 +39,7 @@ export class AppModule {
 
 ## some-comp.ts
 ```bash
-  import {TableView} from "ng2-table-view";
+  import {TableView} from "NG2TableView";
   import {Component, OnInit} from '@angular/core';
   import {PageTableColumns} from "./cols/columns";
   import {Route, ActivatedRoute} from "@angular/router";
