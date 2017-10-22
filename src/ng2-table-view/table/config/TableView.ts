@@ -46,8 +46,8 @@ export class TableView {
             return data;
         }
         let filterKeys = _.keys(config.filtering);
-        for (var i = 0; i < filterKeys.length; i++) {
-            var filterKey = filterKeys[i];
+        for (let i = 0; i < filterKeys.length; i++) {
+            const filterKey = filterKeys[i];
             data = data.filter((item) => {
                 let calculatedItem = filterKey.split(".").reduce((a, b) => a ? a[b] : "", item);
                 let filterString = this.tableBuilder.filtering[filterKey].filterString;

@@ -4,8 +4,8 @@ import * as _ from 'lodash'
 @Component({
     selector: 'ngTableViewPaging',
     outputs: ['pageChanged'],
-    template: require("./pagination.html"),
-    styles: [require("./paging.css")]
+    templateUrl: './pagination.html',
+    styleUrls: ['./paging.css']
 })
 export class NgTableViewPaging implements OnChanges {
 
@@ -42,7 +42,7 @@ export class NgTableViewPaging implements OnChanges {
     }
 
     calculateTotalPages() {
-        var totalPages = this.config.itemsPerPage < 1
+        const totalPages = this.config.itemsPerPage < 1
             ? 1
             : Math.ceil(this.dataLength / this.config.itemsPerPage);
         return Math.max(totalPages || 0, 1);

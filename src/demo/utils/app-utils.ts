@@ -1,8 +1,8 @@
-import {Injector} from '@angular/core';
+import { Injector } from '@angular/core';
 
 let appInjectorRef:Injector;
 export const setInjector = (injector?:Injector) => {
-  if (injector) {
+    if (injector) {
     appInjectorRef = injector;
   }
 };

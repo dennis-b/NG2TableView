@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "NG2TableViewApp"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "demo/assets",
+        "favicon.ico"
+      ],
+      "index": "demo/index.html",
+      "main": "demo/main.ts",
+      "polyfills": "demo/polyfills.ts",
+      "test": "demo/test.ts",
+      "tsconfig": "demo/tsconfig.app.json",
+      "testTsconfig": "demo/tsconfig.spec.json",
+      "prefix": "appTest",
+      "styles": [
+        "demo/styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "demo/environments/environment.ts",
+      "environments": {
+        "dev": "demo/environments/environment.ts",
+        "prod": "demo/environments/environment.prod.ts"
+      }
+    }
+  ],
+  "defaults": {
+    "styleExt": "css",
+    "class": {
+      "spec": false
+    },
+    "component": {}
+  }
+}

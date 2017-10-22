@@ -1,19 +1,19 @@
-import {Injectable} from '@angular/core';
-import {Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
-import {Http} from "@angular/http";
-import {Observable} from "rxjs/Rx";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class DataService implements Resolve<any> {
 
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>|Promise<any>|any {
-        return this.http.get('demo/data/data.json')
-            .map(res => res.json())
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+        return this.http.get('demo/assets/data/data.json')
+            .map(data => data)
 
     }
 }

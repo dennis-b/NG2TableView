@@ -1,10 +1,15 @@
-import {TableColumn} from "./TableColumn";
+import { TableColumn } from "./TableColumn";
+
+
+const template = `<mat-checkbox [(ngModel)]="cellData.selected"></mat-checkbox>`
+
+
 export class SelectTableColumn extends TableColumn {
-    private selectable:boolean = true;
+    private selectable: boolean = true;
 
     constructor() {
         super();
-        this.setTemplate(require("../template/select.html"));
+        this.setTemplate(template);
     }
 
 }

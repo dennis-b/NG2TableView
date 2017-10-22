@@ -4,10 +4,10 @@
         <th class="md-column md-sort" *ngFor="let column of columns; let thInd = index">
 
 
-            <md-checkbox *ngIf="column.selectable"
-                         [checked]="allSelected.checked"
-                         (change)="onAllSelected($event)">
-            </md-checkbox>
+            <mat-checkbox *ngIf="column.selectable"
+                          [(ngModel)]="allSelected.checked"
+                          (change)="onAllSelected($event)">
+            </mat-checkbox>
 
             <div *ngIf="!config || !column.sort">
                 <span>{{column.title}}</span>
@@ -19,10 +19,10 @@
                [column]="column"
                (sortChanged)="onChangeTable($event)">
                 <span>{{column.title}}</span>
-                <md-icon class="material-icons md-icon md-sort-icon"
-                         [ngClass]="{'md-desc': column.sortType === 'desc', 'md-asc': column.sortType === 'asc'}">
+                <mat-icon class="material-icons md-icon md-sort-icon"
+                          [ngClass]="{'md-desc': column.sortType === 'desc', 'md-asc': column.sortType === 'asc'}">
                     arrow_downward
-                </md-icon>
+                </mat-icon>
             </a>
         </th>
     </tr>

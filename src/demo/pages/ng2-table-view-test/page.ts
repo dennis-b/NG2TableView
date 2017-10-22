@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {PageTableColumns} from "./cols/columns";
-import {TableView} from "../../../ng2-table-view";
-import {Route, ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { PageTableColumns } from "./cols/columns";
+import { TableView } from "../../../ng2-table-view";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "demo-page",
-    template: require('./page.html')
+    templateUrl: './page.html'
 })
 export class Page extends TableView implements OnInit {
 
     constructor(private route: ActivatedRoute) {
-        super(route.data.getValue().users);
+        // super(route.data.getValue().users);
+        super(route.snapshot.data['users'])
     }
 
     ngOnInit() {

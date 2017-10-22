@@ -25,40 +25,13 @@ md-edit-dialog > .md-content .md-title {
   margin-bottom: 8px
 }
 
-md-edit-dialog > .md-content md-input-container {
+md-edit-dialog > .md-content mat-input-container {
   margin: 0;
   font-size: 13px
 }
 
-md-edit-dialog > .md-content md-input-container input {
+md-edit-dialog > .md-content mat-input-container input {
   float: none
-}
-
-md-edit-dialog > .md-content md-input-container .md-errors-spacer {
-  min-height: auto;
-  min-width: auto;
-  color: rgba(0, 0, 0, .54)
-}
-
-md-edit-dialog > .md-content md-input-container .md-errors-spacer .md-char-counter {
-  padding: 5px 2px 5px 0
-}
-
-md-edit-dialog > .md-content md-input-container [ng-message] {
-  padding: 5px 0 5px 2px
-}
-
-md-edit-dialog > .md-actions {
-  margin: 0 16px 8px
-}
-
-md-edit-dialog > .md-actions .md-button {
-  margin: 0;
-  min-width: initial
-}
-
-md-edit-dialog > .md-actions .md-button + .md-button {
-  margin-left: 8px
 }
 
 .md-table-pagination {
@@ -130,11 +103,11 @@ md-edit-dialog > .md-actions .md-button + .md-button {
   margin-right: -16px
 }
 
-.md-table-pagination > .buttons > .md-button.md-icon-button {
+.md-table-pagination > .buttons > .md-button.mat-icon-button {
   margin: 0
 }
 
-.md-table-pagination > .buttons > .label + .md-button.md-icon-button {
+.md-table-pagination > .buttons > .label + .md-button.mat-icon-button {
   margin-left: 20px
 }
 
@@ -223,19 +196,19 @@ md-toolbar.md-table-toolbar .md-toolbar-tools {
   padding: 0 24px
 }
 
-md-toolbar.md-table-toolbar .md-toolbar-tools md-icon {
+md-toolbar.md-table-toolbar .md-toolbar-tools mat-icon {
   color: rgba(0, 0, 0, .54)
 }
 
-md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button {
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.mat-icon-button {
   margin: 0
 }
 
-md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:first-child {
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.mat-icon-button:first-child {
   margin-left: -12px
 }
 
-md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:last-child {
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.mat-icon-button:last-child {
   margin-right: -12px
 }
 
@@ -308,45 +281,45 @@ table.md-table th.md-column.md-sort a {
   cursor: pointer
 }
 
-table.md-table th.md-column md-icon {
+table.md-table th.md-column mat-icon {
   height: 16px;
   width: 16px;
   font-size: 16px !important;
   line-height: 16px !important
 }
 
-table.md-table th.md-column md-icon.md-sort-icon {
+table.md-table th.md-column mat-icon.md-sort-icon {
   color: rgba(0, 0, 0, .26);
   opacity: 0;
   transition: -webkit-transform .25s, opacity .25s;
   transition: transform .25s, opacity .25s
 }
 
-table.md-table th.md-column md-icon.md-sort-icon.md-asc {
+table.md-table th.md-column mat-icon.md-sort-icon.md-asc {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg)
 }
 
-table.md-table th.md-column md-icon.md-sort-icon.md-desc {
+table.md-table th.md-column mat-icon.md-sort-icon.md-desc {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg)
 }
 
-table.md-table th.md-column md-icon:not(:first-child) {
+table.md-table th.md-column mat-icon:not(:first-child) {
   margin-left: 8px
 }
 
-table.md-table th.md-column md-icon:not(:last-child) {
+table.md-table th.md-column mat-icon:not(:last-child) {
   margin-right: 8px
 }
 
 table.md-table th.md-column a.md-active,
-table.md-table th.md-column a.md-active md-icon {
+table.md-table th.md-column a.md-active mat-icon {
   color: rgba(0, 0, 0, .87)
 }
 
-table.md-table th.md-column a.md-active md-icon.md-sort-icon,
-table.md-table th.md-column:hover md-icon.md-sort-icon {
+table.md-table th.md-column a.md-active mat-icon.md-sort-icon,
+table.md-table th.md-column:hover mat-icon.md-sort-icon {
   opacity: 1
 }
 
@@ -453,10 +426,8 @@ table.md-table td.md-cell md-select > .md-select-value > span.md-select-icon:aft
   transform: scaleY(0.4) scaleX(0.8)
 }
 
-table.md-table md-checkbox {
+table.md-table mat-checkbox {
   box-sizing: border-box;
-  display: inline-block;
-  margin-bottom: 16px;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
@@ -467,6 +438,7 @@ table.md-table md-checkbox {
   position: relative;
   min-width: 20px;
   min-height: 20px;
-  margin-left: 0;
-  margin-right: 16px;
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

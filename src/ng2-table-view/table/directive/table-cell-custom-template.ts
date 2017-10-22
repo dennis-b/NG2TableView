@@ -1,18 +1,17 @@
 import {
-    NgModule,
-    Component,
-    OnInit,
-    ViewContainerRef,
-    ReflectiveInjector,
-    Input,
     Compiler,
-    ViewChild
+    Component,
+    Input,
+    NgModule,
+    OnInit,
+    ReflectiveInjector,
+    ViewChild,
+    ViewContainerRef
 } from "@angular/core";
 
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {MdCheckboxModule} from '@angular2-material/checkbox';
-import {MdInputModule} from '@angular2-material/input';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { TableMaterialModule } from '../../table-material.module';
 
 
 function compileToComponent(template, data) {
@@ -29,7 +28,7 @@ function compileToComponent(template, data) {
     }
 
     @NgModule({
-        imports: [BrowserModule, FormsModule, MdCheckboxModule, MdInputModule],
+        imports: [BrowserModule, FormsModule, TableMaterialModule],
         declarations: [CellComponent]
     })
     class CellComponentModule {

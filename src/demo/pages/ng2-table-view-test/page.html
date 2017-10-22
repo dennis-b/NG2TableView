@@ -4,21 +4,26 @@
         <div layout-gt-sm="row">
 
 
-            <md-input type="text"
-                      placeholder="filter by index"
-                      class="col"
-                      [column]="'index'"
-                      ng2TableViewFilter="tableBuilder.filtering"
-                      (tableChanged)="onChangeTable($event)">
-            </md-input>
+            <mat-form-field>
+                <input type="text"
+                       placeholder="filter by index"
+                       matInput
+                       class="col"
+                       [column]="'index'"
+                       ng2TableViewFilter="tableBuilder.filtering"
+                       (tableChanged)="onChangeTable($event)"/>
+            </mat-form-field>
 
-            <md-input placeholder="filter by name"
-                      class="col"
-                      style="margin-left: 2em"
-                      [column]="'name'"
-                      ng2TableViewFilter="tableBuilder.filtering"
-                      (tableChanged)="onChangeTable($event)">
-            </md-input>
+            <mat-form-field>
+                <input placeholder="filter by name"
+                       class="col"
+                       matInput
+                       style="margin-left: 2em"
+                       [column]="'name'"
+                       ng2TableViewFilter="tableBuilder.filtering"
+                       (tableChanged)="onChangeTable($event)"/>
+            </mat-form-field>
+
         </div>
 
 

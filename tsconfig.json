@@ -1,41 +1,19 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "strictNullChecks": false,
-    "baseUrl": "./src",
+    "target": "es5",
     "typeRoots": [
-      "./types",
-      "./node_modules/@types"
+      "node_modules/@types"
     ],
-    "paths": {
-    },
     "lib": [
-      "dom",
-      "es7"
-    ],
-    "types": [
-      "source-map",
-      "uglify-js",
-      "webpack",
-      "zone.js",
-      "lodash",
-      "node",
-      "custom"
+      "es2017",
+      "dom"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true,
-    "transpileOnly": true
   }
 }

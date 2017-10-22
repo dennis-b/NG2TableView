@@ -1,9 +1,11 @@
-import {ColumnIfc} from "../../../../ng2-table-view";
-import {TableColumns} from "../../../../ng2-table-view";
-import {TableColumn} from "../../../../ng2-table-view";
+import { ColumnIfc, TableColumn, TableColumns } from "../../../../ng2-table-view";
 
 
-export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
+const customTemplate = `<mat-form-field>
+                            <input matInput placeholder="name" [(ngModel)]="cellData.name"/>
+                        </mat-form-field>`
+
+export const PageTableColumns: Array<ColumnIfc> = new TableColumns()
     .addCol(new TableColumn()
         .setTitle("index")
         .setName("index")
@@ -12,7 +14,7 @@ export const PageTableColumns:Array<ColumnIfc> = new TableColumns()
     .addCol(new TableColumn()
         .setTitle("Editable name ")
         .setName("name")
-        .setTemplate(require("./custom-template.html"))
+        .setTemplate(customTemplate)
         .setSort(true)
     )
     .addCol(new TableColumn()

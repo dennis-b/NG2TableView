@@ -5,8 +5,8 @@ import * as _ from 'lodash';
 @Component({
     selector: 'ng2TableView, [ng2TableView]',
     inputs: ['rows', 'columns', 'config'],
-    styles: [require('./table.css')],
-    template: require('./table.html')
+    templateUrl: './table.html',
+    styleUrls: ['./table.css'],
 })
 
 export class NgTableView {
@@ -19,9 +19,9 @@ export class NgTableView {
     }
 
     onAllSelected($event) {
-        this.allSelected = $event;
+        this.allSelected = $event.checked;
         this.config.data.map((item) => {
-            item.selected = _.includes(this.config.filtered, item) ? this.allSelected : {};
+            item.selected = _.includes(this.config.filtered, item) ? this.allSelected : false;
         });
     }
 
