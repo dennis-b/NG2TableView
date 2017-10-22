@@ -34,6 +34,7 @@ export class NgTableViewPaging implements OnChanges {
     itemsPerPageSelect() {
         this.totalPages = this.calculateTotalPages();
         this.totalPagesArr = new Array(this.totalPages);
+
         this.pageChanged.emit(this.config);
     }
 

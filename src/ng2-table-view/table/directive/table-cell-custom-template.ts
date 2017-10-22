@@ -51,7 +51,7 @@ export class TableCell implements OnInit {
     }
 
     ngOnInit() {
-        var moduleType = compileToComponent(this.cellTemplate, this.cellData);
+        const moduleType = compileToComponent(this.cellTemplate, this.cellData);
         this.compiler.compileModuleAndAllComponentsAsync(moduleType.CellComponentModule)
             .then(({componentFactories}) => {
                 const compFactory = componentFactories.find(x => x.componentType === moduleType.CellComponent);
