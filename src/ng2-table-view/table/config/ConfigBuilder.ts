@@ -1,4 +1,5 @@
 import { ColumnIfc } from "./ColumnIfc";
+import { SortTypes } from '../../index';
 
 /**
  * Created by Dennis on 27/04/2016.
@@ -76,10 +77,20 @@ export class TableConfigBuilder {
         return this;
     }
 
-    setColumnSortable(name: string, sort: boolean) {
+    setColumnSortable(name: string, sortType: SortTypes) {
         const col = this.columns.find(({name: colName}) => colName && name.toLowerCase() === colName.toLowerCase())
         if (col) {
-            col.sort = sort;
+            col.sort = true;
+            col.sortType = sortType
         }
+        this.sorting.columns = [col]
+        return this;
+    }
+
+    setInitSort() {
+        const sorting = []
+        this.columns.forEach(col => col.sortType && sorting.push(col))
+        this.sorting.columns = [...this.sorting.columns, ...sorting];
+        return this;
     }
 }

@@ -1,4 +1,4 @@
-import { ColumnIfc, TableColumn, TableColumns } from "../../../../ng2-table-view";
+import { ColumnIfc, TableColumn, TableColumns, SortTypes } from "../../../../ng2-table-view";
 
 
 const customTemplate = `<mat-form-field>
@@ -10,6 +10,7 @@ export const PageTableColumns: Array<ColumnIfc> = new TableColumns()
         .setTitle("index")
         .setName("index")
         .setSort(true)
+        .setSortType(SortTypes.DESCENDING) // setting initial sorting
     )
     .addCol(new TableColumn()
         .setTitle("Editable name ")

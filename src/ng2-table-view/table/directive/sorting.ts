@@ -1,5 +1,6 @@
 import {Directive, EventEmitter, ElementRef} from '@angular/core';
 import {EmitterService} from "../service/emitter.service";
+import { SortTypes } from '../config/ColumnIfc';
 
 @Directive({
     selector: '[ng2TableViewSortable]',
@@ -36,14 +37,14 @@ export class Ng2TableViewSortable {
 
         if (this.config && this.column && this.column.sort) {
             switch (this.column.sortType) {
-                case 'asc':
-                    this.column.sortType = 'desc';
+                case SortTypes.ASCENDING:
+                    this.column.sortType = SortTypes.DESCENDING;
                     break;
-                case 'desc':
-                    this.column.sortType = 'asc';
+                case SortTypes.DESCENDING:
+                    this.column.sortType = SortTypes.ASCENDING;
                     break;
                 default:
-                    this.column.sortType = 'asc';
+                    this.column.sortType = SortTypes.ASCENDING;
                     break;
             }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageTableColumns } from "./cols/columns";
-import { TableView } from "../../../ng2-table-view";
+import { TableView, SortTypes } from "../../../ng2-table-view";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -23,6 +23,6 @@ export class Page extends TableView implements OnInit {
 
         this.buildTable();
 
-        builder.setColumnSortable('email', true);
+        this.setColumnSortable('email', SortTypes.DESCENDING);
     }
 }

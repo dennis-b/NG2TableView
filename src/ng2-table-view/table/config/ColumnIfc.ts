@@ -5,4 +5,11 @@ export interface ColumnIfc {
   uiFilter:String;
   sort:Boolean;
   template:String;
+    sortType?: SortTypes;
+}
+
+
+export enum SortTypes {
+    ASCENDING = "asc",
+    DESCENDING = "desc"
 }
