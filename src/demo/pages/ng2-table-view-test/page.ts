@@ -15,12 +15,14 @@ export class Page extends TableView implements OnInit {
     }
 
     ngOnInit() {
-        this.getBuilder()
-            .addCols(PageTableColumns)
+        const builder = this.getBuilder();
+        builder.addCols(PageTableColumns)
             .setPaging(true)
             .setItemsPerPage(5)
             .setSelectable(true);
 
         this.buildTable();
+
+        builder.setColumnSortable('email', true);
     }
 }
